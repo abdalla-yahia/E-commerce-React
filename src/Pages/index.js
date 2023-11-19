@@ -1,0 +1,11 @@
+export {default as HomePage} from './Home/HomePage';
+export {default as LoginPage} from './Auth/LoginPage';
+export {default as RegesterPage} from './Auth/RegesterPage';
+export {default as ProductPageDetails} from './Products/ProductPageDetails'
+export {default as ShopingProductsPage} from './Products/ShopingProductsPage'
+export {default as CartShooping} from './Products/CartShooping'
+export {default as AllCategory} from './Category/AllCategory'
+export {default as ErrorPage} from './Error/ErrorPage'
+export {default as Rongpath} from './Error/Rongpath'
+export {default as Allbrands} from './Brands/Allbrands'
+export {default as ContinuSelPage} from './Cart/ContinuSelPage'
