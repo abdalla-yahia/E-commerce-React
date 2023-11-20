@@ -7,15 +7,18 @@ function MostSold() {
     <>
         <Title title={'الأكثر مبيعاً'} more ={'....المزيد'} status={true} path={'/allproducts'}/>
         <Row>
-        <ProductCart img={Pic.mobile} price={'5500 جنيه'} title={' موبايل أي فون'} Description={'موبايل أي فون الفئة الحديثة موديل 2024'} rating={'4.3'}/>
-        <ProductCart img={Pic.mobile} price={'5500 جنيه'} title={' موبايل أي فون'} Description={'موبايل أي فون الفئة الحديثة موديل 2024'} rating={'4.3'}/>
-        <ProductCart img={Pic.mobile} price={'5500 جنيه'} title={' موبايل أي فون'} Description={'موبايل أي فون الفئة الحديثة موديل 2024'} rating={'4.3'}/>
-        <ProductCart img={Pic.mobile} price={'5500 جنيه'} title={' موبايل أي فون'} Description={'موبايل أي فون الفئة الحديثة موديل 2024'} rating={'4.3'}/>
-        <ProductCart img={Pic.mobile} price={'5500 جنيه'} title={' موبايل أي فون'} Description={'موبايل أي فون الفئة الحديثة موديل 2024'} rating={'4.3'}/>
-        <ProductCart img={Pic.mobile} price={'5500 جنيه'} title={' موبايل أي فون'} Description={'موبايل أي فون الفئة الحديثة موديل 2024'} rating={'4.3'}/>
+        <ProductCart fav={true} car={true}  img={Pic.mobile} price={'5500 جنيه'} title={' موبايل أي فون'} Description={'موبايل أي فون الفئة الحديثة موديل 2024'} rating={'4.3'}/>
+        <ProductCart fav={true} car={true}  img={Pic.mobile} price={'5500 جنيه'} title={' موبايل أي فون'} Description={'موبايل أي فون الفئة الحديثة موديل 2024'} rating={'4.3'}/>
+        <ProductCart fav={true} car={true}  img={Pic.mobile} price={'5500 جنيه'} title={' موبايل أي فون'} Description={'موبايل أي فون الفئة الحديثة موديل 2024'} rating={'4.3'}/>
+        <ProductCart fav={true} car={true}  img={Pic.mobile} price={'5500 جنيه'} title={' موبايل أي فون'} Description={'موبايل أي فون الفئة الحديثة موديل 2024'} rating={'4.3'}/>
+        <ProductCart fav={true} car={true}  img={Pic.mobile} price={'5500 جنيه'} title={' موبايل أي فون'} Description={'موبايل أي فون الفئة الحديثة موديل 2024'} rating={'4.3'}/>
+        <ProductCart fav={true} car={true}  img={Pic.mobile} price={'5500 جنيه'} title={' موبايل أي فون'} Description={'موبايل أي فون الفئة الحديثة موديل 2024'} rating={'4.3'}/>
         </Row>
     </>
   )
 }
 
 export default MostSold
+
+
+

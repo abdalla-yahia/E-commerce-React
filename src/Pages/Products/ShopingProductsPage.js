@@ -20,14 +20,14 @@ function ShopingProductsPage() {
       <Container sm={10} className='d-flex flex-lg-wrap'>
         <Row >
           
-    <ProductCart img={Pic.Prod3}  Description={'أفخم طقم لست العرايس خامة مستوردة'} price={'4250جنيه '} rating={4.3}/>
-    <ProductCart img={Pic.Prod3}  Description={'أفخم طقم لست العرايس خامة مستوردة'} price={'4250جنيه '} rating={4.3}/>
-    <ProductCart img={Pic.Prod3}  Description={'أفخم طقم لست العرايس خامة مستوردة'} price={'4250جنيه '} rating={4.3}/>
-    <ProductCart img={Pic.Prod3}  Description={'أفخم طقم لست العرايس خامة مستوردة'} price={'4250جنيه '} rating={4.3}/>
-    <ProductCart img={Pic.Prod3}  Description={'أفخم طقم لست العرايس خامة مستوردة'} price={'4250جنيه '} rating={4.3}/>
-    <ProductCart img={Pic.Prod3}  Description={'أفخم طقم لست العرايس خامة مستوردة'} price={'4250جنيه '} rating={4.3}/>
-    <ProductCart img={Pic.Prod3}  Description={'أفخم طقم لست العرايس خامة مستوردة'} price={'4250جنيه '} rating={4.3}/>
-    <ProductCart img={Pic.Prod3}  Description={'أفخم طقم لست العرايس خامة مستوردة'} price={'4250جنيه '} rating={4.3}/>
+    <ProductCart fav={true} car={true} img={Pic.Prod3}  Description={'أفخم طقم لست العرايس خامة مستوردة'} price={'4250جنيه '} rating={4.3}/>
+    <ProductCart fav={true} car={true} img={Pic.Prod3}  Description={'أفخم طقم لست العرايس خامة مستوردة'} price={'4250جنيه '} rating={4.3}/>
+    <ProductCart fav={true} car={true} img={Pic.Prod3}  Description={'أفخم طقم لست العرايس خامة مستوردة'} price={'4250جنيه '} rating={4.3}/>
+    <ProductCart fav={true} car={true} img={Pic.Prod3}  Description={'أفخم طقم لست العرايس خامة مستوردة'} price={'4250جنيه '} rating={4.3}/>
+    <ProductCart fav={true} car={true} img={Pic.Prod3}  Description={'أفخم طقم لست العرايس خامة مستوردة'} price={'4250جنيه '} rating={4.3}/>
+    <ProductCart fav={true} car={true} img={Pic.Prod3}  Description={'أفخم طقم لست العرايس خامة مستوردة'} price={'4250جنيه '} rating={4.3}/>
+    <ProductCart fav={true} car={true} img={Pic.Prod3}  Description={'أفخم طقم لست العرايس خامة مستوردة'} price={'4250جنيه '} rating={4.3}/>
+    <ProductCart fav={true} car={true} img={Pic.Prod3}  Description={'أفخم طقم لست العرايس خامة مستوردة'} price={'4250جنيه '} rating={4.3}/>
 
         </Row>
       </Container>

@@ -34,7 +34,7 @@ function ProductDitails({cat,details,describtion,price,color}) {
     </div>
     <div className='d-flex gap-3'>
         <Button variant='light'>3400 جنية</Button>
-        <Link to='/cartShoping'><Button variant='dark'>أضف للعربة</Button></Link>
+        <Link to='/cartShoping/'><Button variant='dark'>أضف للعربة</Button></Link>
     </div>
     </div>
         </Container>

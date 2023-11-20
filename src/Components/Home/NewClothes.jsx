@@ -10,12 +10,12 @@ function NewClothes() {
             <Title status={true} more={'المزيد ....'} title={'أحدث الأزياء'} path={'/allproducts'}/>
         
             <Row>
-            <ProductCart img={prod1} price={'15000 جنية'} rating={4.7} title={'لاب توب ماك '} Description={'أحدث لاب توب والأقوي والاسرع' }/>
-            <ProductCart img={prod1} price={'15000 جنية'} rating={4.7} title={'لاب توب ماك '} Description={'أحدث لاب توب والأقوي والاسرع' }/>
-            <ProductCart img={prod1} price={'15000 جنية'} rating={4.7} title={'لاب توب ماك '} Description={'أحدث لاب توب والأقوي والاسرع' }/>
-            <ProductCart img={prod1} price={'15000 جنية'} rating={4.7} title={'لاب توب ماك '} Description={'أحدث لاب توب والأقوي والاسرع' }/>
-            <ProductCart img={prod1} price={'15000 جنية'} rating={4.7} title={'لاب توب ماك '} Description={'أحدث لاب توب والأقوي والاسرع' }/>
-            <ProductCart img={prod1} price={'15000 جنية'} rating={4.7} title={'لاب توب ماك '} Description={'أحدث لاب توب والأقوي والاسرع' }/>
+            <ProductCart fav={true} car={true} img={prod1} price={'15000 جنية'} rating={4.7} title={'لاب توب ماك '} Description={'أحدث لاب توب والأقوي والاسرع' }/>
+            <ProductCart fav={true} car={true} img={prod1} price={'15000 جنية'} rating={4.7} title={'لاب توب ماك '} Description={'أحدث لاب توب والأقوي والاسرع' }/>
+            <ProductCart fav={true} car={true} img={prod1} price={'15000 جنية'} rating={4.7} title={'لاب توب ماك '} Description={'أحدث لاب توب والأقوي والاسرع' }/>
+            <ProductCart fav={true} car={true} img={prod1} price={'15000 جنية'} rating={4.7} title={'لاب توب ماك '} Description={'أحدث لاب توب والأقوي والاسرع' }/>
+            <ProductCart fav={true} car={true} img={prod1} price={'15000 جنية'} rating={4.7} title={'لاب توب ماك '} Description={'أحدث لاب توب والأقوي والاسرع' }/>
+            <ProductCart fav={true} car={true} img={prod1} price={'15000 جنية'} rating={4.7} title={'لاب توب ماك '} Description={'أحدث لاب توب والأقوي والاسرع' }/>
             </Row>
     </>
   )

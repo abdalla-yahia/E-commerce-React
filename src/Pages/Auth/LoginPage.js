@@ -19,6 +19,9 @@ function LoginPage() {
         ليس لديك حساب؟
         <Link className="text-danger text-decoration-none" to={'/login/regester'}>أضغط هنا</Link>
       </Form.Label>
+      <Form.Label className="mb-3">
+        <Link className="text-danger text-decoration-none" to={'/adminhomepage'}> الدخول بحساب الأدمن</Link>
+      </Form.Label>
     </Form>
   )
 }

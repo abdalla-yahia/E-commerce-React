@@ -9,9 +9,9 @@ function CartShooping() {
       <Title  title={'عربة التسوق'}/>
       <Row >
         <Col lg={9} sm={12} md='8'>
-            <CartItem />
-            <CartItem />
-            <CartItem />
+            <CartItem dell={true} count={true}/>
+            <CartItem dell={true} count={true}/>
+            <CartItem dell={true} count={true}/>
         </Col>
         <Col lg={3} sm={12} md='4' >
           <div className='d-flex bg-light px-2 py-3 rounded-4 flex-column w-100 text-center'>
@@ -21,7 +21,7 @@ function CartShooping() {
           </span>
 
             <div  className='p-2 mb-3 w-100 border text-center'>3400 جنية </div>
-            <Link to={'/countinuSel'}>
+            <Link to={'./countinuSel'}>
             <button className='p-2 text-center border-radius-none bg-dark text-light border outline'>إتمام عملية الشراء</button>
             </Link>
           </div>

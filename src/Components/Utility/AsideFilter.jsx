@@ -2,7 +2,7 @@ import React from 'react'
 
 function AsideFilter() {
   return (
-    <div className='d-flex flex-column p-2' style={{maxWidth:'fit-content'}}>
+    <div className='d-flex flex-column p-4' style={{maxWidth:'fit-content',backgroundColor:'#fff'}}>
         <div className='d-flex flex-column'>
 
         <h4>الفئة</h4>

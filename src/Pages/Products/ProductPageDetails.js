@@ -16,14 +16,14 @@ function ProductPageDetails() {
       </Row>
       <Row>
         <Comp.Title title={'منتجات قد تعجبك'}/>
-        <Comp.ProductCart img={Pic.Prod3} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
-        <Comp.ProductCart img={Pic.prod1} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
-        <Comp.ProductCart img={Pic.Prod4} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
-        <Comp.ProductCart img={Pic.mobile} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
-        <Comp.ProductCart img={Pic.mobile2} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
-        <Comp.ProductCart img={Pic.mobile1} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
-        <Comp.ProductCart img={Pic.Prod3} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
-        <Comp.ProductCart img={Pic.prod1} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
+        <Comp.ProductCart fav={true} car={true} img={Pic.Prod3} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
+        <Comp.ProductCart fav={true} car={true} img={Pic.prod1} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
+        <Comp.ProductCart fav={true} car={true} img={Pic.Prod4} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
+        <Comp.ProductCart fav={true} car={true} img={Pic.mobile} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
+        <Comp.ProductCart fav={true} car={true} img={Pic.mobile2} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
+        <Comp.ProductCart fav={true} car={true} img={Pic.mobile1} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
+        <Comp.ProductCart fav={true} car={true} img={Pic.Prod3} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
+        <Comp.ProductCart fav={true} car={true} img={Pic.prod1} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
       </Row>
     </Container>
     </div>

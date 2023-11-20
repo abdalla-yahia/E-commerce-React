@@ -84,3 +84,26 @@ display: none !important;
   background-color: black !important;
   color: white !important;
 }
+.admin-dash {
+  border-block-end: 1px solid #ddd;
+}
+.admin-dash:hover  {
+  background-color: black;
+  border-block-end: 1px solid blue;
+  
+  .admin-dash-title{
+    color: #fff !important;
+  }
+  .admin-dash-icon{
+    color: rgb(74, 74, 160) !important;
+}
+}
+@media (max-width:767px) {
+  .admin-dash-icon {
+    display: block;
+    width: 100%;
+  }
+  .admin-dash-title {
+    display: none;
+  }
+}

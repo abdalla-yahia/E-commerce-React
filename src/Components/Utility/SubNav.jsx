@@ -2,7 +2,7 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 
 export default function SubNav() {
   return (
-    <Navbar  bg="light" data-bs-theme="primary">
+    <Navbar data-bs-theme="primary" style={{backgroundColor:'#fff'}}>
         <Container>
         <Nav  className="ms-auto">
             <Nav.Link href="#home">الكل</Nav.Link>

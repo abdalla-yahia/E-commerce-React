@@ -19,4 +19,5 @@ export {default as brand2} from './Images/brand2.png';
 export {default as brand3} from './Images/brand3.png';
 export {default as cart} from './Images/cart.png';
 export {default as delete} from './Images/delete.png';
+export {default as avatar} from './Images/avatar.png';
 
