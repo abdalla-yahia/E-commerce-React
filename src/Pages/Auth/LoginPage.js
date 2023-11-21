@@ -22,6 +22,9 @@ function LoginPage() {
       <Form.Label className="mb-3">
         <Link className="text-danger text-decoration-none" to={'/adminhomepage'}> الدخول بحساب الأدمن</Link>
       </Form.Label>
+      <Form.Label className="mb-3">
+        <Link className="text-danger text-decoration-none" to={'/userhomepage'}> الدخول بحساب المستخدم</Link>
+      </Form.Label>
     </Form>
   )
 }

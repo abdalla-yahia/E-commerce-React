@@ -1,32 +1,28 @@
 import { Col, Container, Row } from 'react-bootstrap'
-import { AdminAddSubCategory, AdminSideBar, AdminTitle, Title } from '../../Components'
+import * as Comp from '../../Components'
+// import UserAllOrders from './UserAllOrders'
 
-function AdminSubCategory() {
+function UserHomePage() {
   return (
-    <Container>
-      <Row>
+    <Container >
+              <Row>
       <Col sm='4' lg='3' md='4' xs='4'>
-
-        <AdminTitle title={'القائمة الرئيسية'}/>
+        <Comp.UserTitle title={'القائمة الرئيسية'}/>
       </Col>
       <Col sm='8' lg='9' md='8' xs='8'>
-
-        <Title title={'اضافة تصنيف فرعي'}/>
+        <Comp.Title title={' مرحباً : محمد على   '}/>
       </Col>
       </Row>
-
-
         <Row className='flex-nowrap'>
             <Col sm='4' lg='3' md='4' xs='4'>
-            <AdminSideBar />
+            <Comp.UserSidebar />
             </Col>
             <Col sm='8' lg='9' md='8' xs='8'>
-            <AdminAddSubCategory />
+                <Comp.UserHome />
             </Col>
         </Row>
     </Container>
   )
 }
 
-
-export default AdminSubCategory
+export default UserHomePage

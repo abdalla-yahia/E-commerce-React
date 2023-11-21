@@ -1,8 +1,30 @@
+import { useEffect,useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import * as Comp from '../../Components'
-import {prod1,Prod3,pic,mobile,clothe} from '../../Assets'
+import { useSelector,useDispatch } from 'react-redux'
+import getAllCategories from '../../Redux/Actions/CategoryActions'
 
 function AllCategory() {
+  const data = useSelector(state=>state.categories.categories.data)
+  const loading =useSelector(state=>state.categories.loading)
+  const countOfpages = useSelector(state=>state.categories.categories)
+  const dispatch = useDispatch()
+  const [page,setPage]=useState(0)
+ 
+  useEffect(()=>{
+    dispatch(getAllCategories(page,2))
+  },[page,dispatch])
+  
+  let pg = (e)=>{
+    setPage(e)
+  }
+
+  let pages =1
+  if(countOfpages.paginationResult){
+    pages = countOfpages.paginationResult.numberOfPages
+  }
+ 
+
   return (
     <>
     <Container >
@@ -13,22 +35,16 @@ function AllCategory() {
         <Col sm='3' lg='2' md='4'>
         <Comp.AsideFilter />
         </Col>
-
         <Col sm='9' lg='10' md='8' style={{backgroundColor:'#fff'}} className='d-flex flex-wrap justify-content-center align-items-center'>
-            <Comp.ElementCategory img={Prod3} title={'تخفيض'} color={'#111'}/>
-            <Comp.ElementCategory img={pic} title={'تخفيض'} color={'#222'}/>
-            <Comp.ElementCategory img={prod1} title={'تخفيض'} color={'#333'}/>
-            <Comp.ElementCategory img={Prod3} title={'تخفيض'} color={'#444'}/>
-            <Comp.ElementCategory img={mobile} title={'تخفيض'} color={'#555'}/>
-            <Comp.ElementCategory img={clothe} title={'تخفيض'} color={'#666'}/>
-            <Comp.ElementCategory img={clothe} title={'تخفيض'} color={'#777'}/>
-            <Comp.ElementCategory img={mobile} title={'تخفيض'} color={'#888'}/>
-            <Comp.ElementCategory img={pic} title={'تخفيض'} color={'#999'}/>
-            <Comp.ElementCategory img={prod1} title={'تخفيض'} color={'#002'}/>
-            <Comp.ElementCategory img={mobile} title={'تخفيض'} color={'#013'}/>
-            <Comp.ElementCategory img={Prod3} title={'تخفيض'} color={'#022'}/>
+        
+        {loading === false?
+        (data? data.map(e=>
+        <Comp.ElementCategory img={e.image} title={e.name} color={'#eed1ff'}/>)
+      :<h1>لا يوجد تصنيفات</h1>)
+      :<Comp.Loading />} 
+
         </Col>
-        <Comp.Pagination/>
+        <Comp.Pagination pages={pages} pg={pg}/>
         </Row>
         
     </Container>

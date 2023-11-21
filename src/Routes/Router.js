@@ -24,6 +24,12 @@ export const router = createBrowserRouter(
         <Route path="/adminhomepage/adminesubcategory" element={<Page.AdminSubCategory/>} errorElement={<Page.ErrorPage />}/>
         <Route path="/adminhomepage/admineaddproducts" element={<Page.AdminAddProducts/>} errorElement={<Page.ErrorPage />}/>
         <Route path="/adminhomepage/adminallorders/order/32" element={<Page.AdminSingleOrder/>} errorElement={<Page.ErrorPage />}/>
+        <Route path="/userhomepage" element={<Page.UserHomePage/>} errorElement={<Page.ErrorPage />}/>
+        <Route path="/userhomepage/allorders" element={<Page.UserAllOrders/>} errorElement={<Page.ErrorPage />}/>
+        <Route path="/userhomepage/favproducts" element={<Page.UserFAveProducts/>} errorElement={<Page.ErrorPage />}/>
+        <Route path="/userhomepage/userAdresses" element={<Page.UserAddresses/>} errorElement={<Page.ErrorPage />}/>
+        <Route path="/userhomepage/userAdresses/addnewadreess" element={<Page.UserEditeAddress/>} errorElement={<Page.ErrorPage />}/>
+        <Route path="/userhomepage/profile/:id" element={<Page.UserProfile/>} errorElement={<Page.ErrorPage />}/>
         
         
         <Route path="*" element={<Page.Rongpath/>}/>

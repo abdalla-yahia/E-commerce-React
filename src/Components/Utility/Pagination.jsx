@@ -1,18 +1,18 @@
 
 import ReactPaginate from 'react-paginate'
 
-function Paginations({pg,data}) {
+function Paginations({pg,pages}) {
   const handlePageClick =(e)=>{
     pg(e.selected +1 )
+    
   }
- 
-const pageCount = data || 100
+const pageCount = pages || 5
   return (
       <div style={{width:'100%',display:'flex',alignItems:'center',justifyContent:'center',margin:'15px 0'}}>
             <ReactPaginate
                 breakLabel="..."
                 nextLabel="التالي >"
-                onPageChange={pg?handlePageClick:null}
+                onPageChange={handlePageClick}
                 marginPagesDisplayed={'2'}
                 activeClassName='active'
                 pageCount={pageCount}
