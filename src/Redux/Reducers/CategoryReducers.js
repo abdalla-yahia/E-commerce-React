@@ -1,4 +1,4 @@
-import {GET_ALL_CATEGORIES} from '../Types/Types'
+import {GET_ALL_CATEGORIES,CREATE_CATEGORY} from '../Types/Types'
 
 const initiaState = {
     categories: [],
@@ -14,8 +14,13 @@ const categoriesReducer = (state=initiaState, action) => {
                 categories: action.payload,
                 loading: false
             }
+            
+        case CREATE_CATEGORY:
+            return {
+           ...state,
+           loading: false}
         default:
             return state
     }
 }
-export default categoriesReducer
+export default categoriesReducer;

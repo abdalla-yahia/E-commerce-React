@@ -1,9 +1,18 @@
 import baseURL from "../Api/baseURL";
 
-const getAllCategoriesHook =  async (url,params) => {
+// GET All Contents
+const getAllHook =  async (url,params) => {
 
     const res =  await baseURL.get(url,params);
     return res
 }
 
-export default getAllCategoriesHook
+export default getAllHook
+
+
+//Create a new hook
+export const  CreateHook =async (url,params)  => {
+
+    const res = await baseURL.post(url,params);
+    return res
+}
