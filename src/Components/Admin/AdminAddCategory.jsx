@@ -14,7 +14,7 @@ const [img,setImage] = useState(Pic.avatar)
 const [path, setPath] = useState('')
 
 const UploadFileHandeller = (e)=>{
-  setImage(URL.createObjectURL(e.target.files[0]));
+ URL && setImage(URL.createObjectURL(e.target.files[0]));
   setPath(e.target.files[0]);
 }
 const formDAta = new FormData()

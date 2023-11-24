@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCartShopping, faCopyright, faDiagramSuccessor, faFilterCircleDollar, faSquarePlus } from "@fortawesome/free-solid-svg-icons"
+import { faBrain, faCartShopping, faCopyright, faCrutch, faDiagramSuccessor, faFilterCircleDollar, faSquarePlus } from "@fortawesome/free-solid-svg-icons"
 import { Link } from "react-router-dom"
 import { faProductHunt } from "@fortawesome/free-brands-svg-icons"
 
@@ -11,37 +11,49 @@ function AdminSideBar() {
             <div className="pt-3 admin-dash d-flex flex-wrap text-center justify-content-evenly align-items-center w-100">
                 <Link to='/adminhomepage/adminallorders' className="text-decoration-none text-dark w-100">
                 <FontAwesomeIcon className="admin-dash-icon " icon={faCartShopping}/>
-                <h4 className="admin-dash-title ">كل الطلبات</h4>
+                <p className="admin-dash-title ">كل الطلبات</p>
                 </Link>
             </div>
             <div className="pt-3 admin-dash d-flex flex-wrap text-center justify-content-evenly align-items-center w-100">
                 <Link to='/adminhomepage/adminproductsedit' className="text-decoration-none text-dark w-100">
                 <FontAwesomeIcon className="admin-dash-icon " icon={faProductHunt}/>
-                <h4 className="admin-dash-title "> إدارة المنتجات</h4>
+                <p className="admin-dash-title "> إدارة المنتجات</p>
+                </Link>
+            </div>
+            <div className="pt-3 admin-dash d-flex flex-wrap text-center justify-content-evenly align-items-center w-100">
+                <Link to='/adminhomepage/adminallbrands' className="text-decoration-none text-dark w-100">
+                <FontAwesomeIcon className="admin-dash-icon " icon={faBrain}/>
+                <p className="admin-dash-title "> إدارة الماركات</p>
+                </Link>
+            </div>
+            <div className="pt-3 admin-dash d-flex flex-wrap text-center justify-content-evenly align-items-center w-100">
+                <Link to='/adminhomepage/adminallcategories' className="text-decoration-none text-dark w-100">
+                <FontAwesomeIcon className="admin-dash-icon " icon={faCrutch}/>
+                <p className="admin-dash-title "> إدارة التصنيفات</p>
                 </Link>
             </div>
             <div className="pt-3 admin-dash d-flex flex-wrap text-center justify-content-evenly align-items-center w-100">
                 <Link to='/adminhomepage/adminbrandsedit' className="text-decoration-none text-dark w-100">
                 <FontAwesomeIcon className="admin-dash-icon " icon={faCopyright}/>
-                <h4 className="admin-dash-title "> إدارة الماركات</h4>
+                <p className="admin-dash-title "> إضافة ماركة</p>
                 </Link>
             </div>
             <div className="pt-3 admin-dash d-flex flex-wrap text-center justify-content-evenly align-items-center w-100">
                 <Link to='/adminhomepage/admineditcategory' className="text-decoration-none text-dark w-100">
                 <FontAwesomeIcon className="admin-dash-icon " icon={faFilterCircleDollar}/>
-                <h4 className="admin-dash-title ">إدارة التصنيفات </h4>
+                <p className="admin-dash-title ">إضافة تصنيف </p>
                 </Link>
             </div>
             <div className="pt-3 admin-dash d-flex flex-wrap text-center justify-content-evenly align-items-center w-100">
                 <Link to='/adminhomepage/adminesubcategory' className="text-decoration-none text-dark w-100">
                 <FontAwesomeIcon className="admin-dash-icon " icon={faDiagramSuccessor}/>
-                <h4 className="admin-dash-title "> إضافة تصنيف فرعي</h4>
+                <p className="admin-dash-title "> إضافة تصنيف فرعي</p>
                 </Link>
             </div>
             <div className="pt-3 admin-dash d-flex flex-wrap text-center justify-content-evenly align-items-center w-100">
                 <Link to='/adminhomepage/admineaddproducts' className="text-decoration-none text-dark w-100">
                 <FontAwesomeIcon className="admin-dash-icon " icon={faSquarePlus}/>
-                <h4 className="admin-dash-title "> إضافة منتج </h4>
+                <p className="admin-dash-title "> إضافة منتج </p>
                 </Link>
             </div>
             

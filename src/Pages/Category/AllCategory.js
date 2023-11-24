@@ -12,7 +12,7 @@ function AllCategory() {
   const [page,setPage]=useState(0)
  
   useEffect(()=>{
-    dispatch(getAllCategories(page,2))
+    dispatch(getAllCategories(page,12))
   },[page,dispatch])
   
   let pg = (e)=>{

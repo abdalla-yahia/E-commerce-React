@@ -10,7 +10,7 @@ function HomePage() {
     <Comp.MostSold/>
     <Comp.Discount/>
     <Comp.NewClothes/>
-    <Comp.Brands/>
+    <Comp.Brands />
 
     </Container>
     </>

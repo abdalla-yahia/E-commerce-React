@@ -5,21 +5,22 @@ import getAllCategories from "../../Redux/Actions/CategoryActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
-function MainCategory() {
+function MainCategory({title,control}) {
   const data = useSelector(state=>state.categories.categories.data)
   const dispatch = useDispatch()
   
   useEffect(()=>{
       dispatch(getAllCategories())
-  },[])
+  },[dispatch,data])
   return (
     <Container >
-        <Title title={'التصنيفات'} status={true} more={'....المزيد'} path={'/allcategory'}/>
+      { title === undefined ?(<Title title={'التصنيفات'} status={true} more={'....المزيد'} path={'/allcategory'}/>)
+      :null}
         <Row >
         <Col  lg='12'  style={{backgroundColor:'#fff'}} className='d-flex p-3 flex-wrap justify-content-center align-items-center'>
                 {
-                data && data.map((item,index)=>(
-                    <ElementCategory key={index} img={item.image} color={item.color} title={item.name}/>
+                data && data.slice(0,6).map((item,index)=>(
+                    <ElementCategory control={control} id={item._id} key={index} img={item.image} color={item.color} title={item.name}/>
                   ))
                 }
             </Col>

@@ -1,11 +1,13 @@
 import categoriesReducer from './CategoryReducers';
-import getAllBrandsReducer from './BrandsReducer';
+import BrandsReducer from './BrandsReducer';
 
 import {combineReducers} from 'redux'
+import SubCategoryReducer from './SubCategoriesReducer';
 
 const rootReducer = combineReducers({
     categories: categoriesReducer,
-    brands: getAllBrandsReducer
+    brands: BrandsReducer,
+    subCategories:SubCategoryReducer
 })
 
 export default rootReducer

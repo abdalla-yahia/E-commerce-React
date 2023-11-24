@@ -18,6 +18,8 @@ export const router = createBrowserRouter(
         <Route path="/cartShoping/countinuSel" element={<Page.ContinuSelPage/>} errorElement={<Page.ErrorPage />}/>
         <Route path="/adminhomepage" element={<Page.AdminHomePage/>} errorElement={<Page.ErrorPage />}/>
         <Route path="/adminhomepage/adminallorders" element={<Page.AdminAllOrders/>} errorElement={<Page.ErrorPage />}/>
+        <Route path="/adminhomepage/adminallbrands" element={<Page.AdminAllBrands/>} errorElement={<Page.ErrorPage />}/>
+        <Route path="/adminhomepage/adminallcategories" element={<Page.AdminAllCategory/>} errorElement={<Page.ErrorPage />}/>
         <Route path="/adminhomepage/adminproductsedit" element={<Page.AdminProductsEdit/>} errorElement={<Page.ErrorPage />}/>
         <Route path="/adminhomepage/adminbrandsedit" element={<Page.AdminBrandsEdit/>} errorElement={<Page.ErrorPage />}/>
         <Route path="/adminhomepage/admineditcategory" element={<Page.AdminCategoryEdit/>} errorElement={<Page.ErrorPage />}/>

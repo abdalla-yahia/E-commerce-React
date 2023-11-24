@@ -12,7 +12,7 @@ function Allbrands() {
   const countOfpages = useSelector((state) => state.brands.brands)
   
   useEffect(() => {
-    dispatch(getAllBrandsReducer(page,1))
+    dispatch(getAllBrandsReducer(page,12))
   }, [page,dispatch])
   
   let pg = (e)=>{
@@ -30,7 +30,7 @@ function Allbrands() {
     <Row> 
 
       {loading === false ?
-      (brands ? brands.slice(0,6).map((e,i) =>
+      (brands ? brands.map((e,i) =>
             <BrandCard img={e.image} title={e.name}/>
             ):<h1>لا يوجد ماركات</h1>) :
             <Loading />

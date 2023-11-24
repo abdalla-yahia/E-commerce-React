@@ -1,4 +1,4 @@
-import {GET_ALL_CATEGORIES,CREATE_CATEGORY} from '../Types/Types'
+import {GET_ALL_CATEGORIES,CREATE_CATEGORY, DELETE_CATEGORY} from '../Types/Types'
 
 const initiaState = {
     categories: [],
@@ -19,6 +19,11 @@ const categoriesReducer = (state=initiaState, action) => {
             return {
            ...state,
            loading: false}
+           case DELETE_CATEGORY:
+            return {
+          ...state,
+          categories:[...state],
+          loading: false}
         default:
             return state
     }

@@ -8,7 +8,8 @@ function Paginations({pg,pages}) {
   }
 const pageCount = pages || 5
   return (
-      <div style={{width:'100%',display:'flex',alignItems:'center',justifyContent:'center',margin:'15px 0'}}>
+    <>
+     {pages > 1 ? <div style={{width:'100%',display:'flex',alignItems:'center',justifyContent:'center',margin:'15px 0'}}>
             <ReactPaginate
                 breakLabel="..."
                 nextLabel="التالي >"
@@ -28,8 +29,9 @@ const pageCount = pages || 5
                 pageLinkClassName='page-link'
                 breakLinkClassName='page-link'
                 activeLinkClassName='page-link-active'
-      />
-  </div>
+                />
+  </div> : null}
+                </>
   )
 }
 
