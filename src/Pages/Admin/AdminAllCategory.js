@@ -10,7 +10,7 @@ function AdminAllCategory() {
 <Comp.AdminTitle title={'القائمة الرئيسية'}/>
 </Col>
 <Col sm='8' lg='9' md='8' xs='8'>
-<Comp.Title title={' كل الطلبات  '}/>
+<Comp.Title title={' كل التصنيفات  '}/>
 </Col>
 </Row>
 <Row className='flex-nowrap'>

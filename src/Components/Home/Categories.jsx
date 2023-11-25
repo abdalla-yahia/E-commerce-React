@@ -28,7 +28,7 @@ dispatch(getAllCategories())
                 {
                 categories.data && categories.data.slice(0,6).map((item,index)=>(
                     <ElementCategory key={index} img={item.image}  title={item.name} color={Colors[Math.floor(Math.random() * Colors.length)]}/>
-                  ))
+                ))
                 }
             </Col>
         </Row>

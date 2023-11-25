@@ -1,7 +1,7 @@
 import {GET_ALL_CATEGORIES,CREATE_CATEGORY,DELETE_CATEGORY,GET_CATEGORY_BY_BG} from '../Types/Types'
 import getAllHook,{CreateHook,DeleteteHook} from '../../Hooks/Custom-Hooks';
 
-const getAllCategories =  (e=5) => async (dispatch) => { 
+const getAllCategories =  (e) => async (dispatch) => { 
     try {
         const response = await getAllHook(`/api/v1/categories/?limit=${e}`)
         

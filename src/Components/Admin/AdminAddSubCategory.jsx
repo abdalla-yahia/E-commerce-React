@@ -12,8 +12,8 @@ function AdminAddSubCategory() {
  
 
   useEffect(()=>{
-    dispatch(getAllCategories())
-  },[dispatch])
+    dispatch(getAllCategories(1000))
+  },[])
   
   const SaveSubCategoryHandeller =()=>{
     
