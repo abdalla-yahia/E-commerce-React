@@ -12,18 +12,17 @@ function MainCategory({title,control}) {
   const dispatch = useDispatch()
   const categories = useSelector(state=>state.categories.categories)
   
-
+  let pages = 2
+  if(categories.paginationResult){
+    pages = categories.paginationResult.numberOfPages
+  }
+  
 useEffect(()=>{
-dispatch(getAllCategories())
-},[dispatch])
+dispatch(getAllCategories(5))
+},[dispatch,pages])
   
 const pg =(e)=>{
   dispatch(getCategoriesByPg(e,5))
-}
-let pages = 0
-if(categories.paginationResult){
-  console.log(categories.paginationResult.numberOfPages)
-pages = categories.paginationResult.numberOfPages
 }
 
   return (
@@ -39,10 +38,10 @@ pages = categories.paginationResult.numberOfPages
                   ))
                 }
             </Col>
+            <Paginations pages={pages}  pg={pg}/>
         </Row>
 
     </Container>
-            <Paginations pages={pages}  pg={pg}/>
                 </>
   )
 }
