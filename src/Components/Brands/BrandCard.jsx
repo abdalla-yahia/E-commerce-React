@@ -1,11 +1,18 @@
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Card, Col } from 'react-bootstrap';
-import {DeleteBrand} from '../../Redux/Actions/BrandsActions';
+import {DeleteBrand,GetBrand} from '../../Redux/Actions/BrandsActions';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 
 function BrandCard({img,title,control,id}) {
 const dispatch = useDispatch()
+
+
+const GetBrandHandeller = async()=>{
+ await dispatch(GetBrand(id))
+}
 
   const DeleteHandeller = ()=>{
     dispatch(DeleteBrand(id))
@@ -20,9 +27,10 @@ const dispatch = useDispatch()
               <span onClick={()=>DeleteHandeller()}>
               <FontAwesomeIcon icon={faTrash} style={{cursor:'pointer'}}/>
               </span>
-              <span>
+              
+              <Link  to={`/adminhomepage/brands/:${id}`} onClick={()=>GetBrandHandeller()}>
               <FontAwesomeIcon icon={faEdit} style={{cursor:'pointer'}}/>
-              </span>
+              </Link>
               </div>:<Card.Title>{title}</Card.Title>}
                 </Card.Footer>
             </Card>

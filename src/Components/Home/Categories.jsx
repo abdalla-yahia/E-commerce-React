@@ -1,13 +1,12 @@
 import { Col, Container, Row } from "react-bootstrap"
-import ElementCategory from "./ElementCategory";
+import {ElementCategory} from "../.";
 import Title from "../Utility/Title-more";
-import getAllCategories,{getCategoriesByPg} from "../../Redux/Actions/CategoryActions";
+import getAllCategories from "../../Redux/Actions/CategoryActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import Paginations from "../Utility/Pagination";
 
 const Colors = ['#26a69a','#8d6e63','#e57373','#f48fb1','#81c784','#aed581','#7e57c2','#fff176','#7986cb']
-function MainCategory({title,control}) {
+function Categories({title}) {
   
   const dispatch = useDispatch()
   const categories = useSelector(state=>state.categories.categories)
@@ -17,14 +16,7 @@ useEffect(()=>{
 dispatch(getAllCategories())
 },[dispatch])
   
-const pg =(e)=>{
-  dispatch(getCategoriesByPg(e,5))
-}
-let pages = 0
-if(categories.paginationResult){
-  console.log(categories.paginationResult.numberOfPages)
-pages = categories.paginationResult.numberOfPages
-}
+
 
   return (
     <>
@@ -34,17 +26,17 @@ pages = categories.paginationResult.numberOfPages
         <Row >
         <Col  lg='12'  style={{backgroundColor:'#fff'}} className='d-flex p-3 flex-wrap justify-content-between align-items-center'>
                 {
-                categories.data && categories.data.map((item,index)=>(
-                    <ElementCategory control={control} id={item._id} key={index} img={item.image}  title={item.name} color={Colors[Math.floor(Math.random() * Colors.length)]}/>
+                categories.data && categories.data.slice(0,6).map((item,index)=>(
+                    <ElementCategory key={index} img={item.image}  title={item.name} color={Colors[Math.floor(Math.random() * Colors.length)]}/>
                   ))
                 }
             </Col>
         </Row>
 
     </Container>
-            <Paginations pages={pages}  pg={pg}/>
+            
                 </>
   )
 }
 
-export default MainCategory
+export default Categories

@@ -32,6 +32,7 @@ export const router = createBrowserRouter(
         <Route path="/userhomepage/userAdresses" element={<Page.UserAddresses/>} errorElement={<Page.ErrorPage />}/>
         <Route path="/userhomepage/userAdresses/addnewadreess" element={<Page.UserEditeAddress/>} errorElement={<Page.ErrorPage />}/>
         <Route path="/userhomepage/profile/:id" element={<Page.UserProfile/>} errorElement={<Page.ErrorPage />}/>
+        <Route path="/adminhomepage/brands/:id" element={<Page.AdminEditBrand/>} errorElement={<Page.ErrorPage />}/>
         
         
         <Route path="*" element={<Page.Rongpath/>}/>

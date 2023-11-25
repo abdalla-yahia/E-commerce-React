@@ -2,6 +2,7 @@ import * as Comp from '../../Components'
 import { Col, Container, Row } from 'react-bootstrap'
 
 function AdminAllBrands() {
+  
   return (
     <Container>
     <Row>
@@ -19,6 +20,7 @@ function AdminAllBrands() {
     </Col>
     <Col sm='9' lg='9' md='8' xs='8'>
     <Comp.Brands title={false} control={true}/>
+    
     </Col>
 </Row>
 </Container>

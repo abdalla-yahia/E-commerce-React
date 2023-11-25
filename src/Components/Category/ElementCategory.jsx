@@ -6,6 +6,7 @@ import {DeleteCategory} from '../../Redux/Actions/CategoryActions'
 
 function ElementCategory({img,color,title,control,id}) {
 const dispatch = useDispatch()
+
 const DeleteHandeller =()=>{
   dispatch(DeleteCategory(id))
   

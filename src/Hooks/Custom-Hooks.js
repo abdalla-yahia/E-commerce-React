@@ -23,3 +23,11 @@ export const  DeleteteHook =async (url,params)  => {
     const res = await baseURL.delete(url,params);
     return res
 }
+
+//Update a Content hook
+
+export const  UpdateHook =async (url,params)  => {
+
+    const res = await baseURL.put(url,params);
+    return res
+}

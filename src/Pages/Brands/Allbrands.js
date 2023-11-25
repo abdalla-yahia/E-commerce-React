@@ -3,6 +3,7 @@ import { useEffect,useState } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import {Pagination, Title,BrandCard, SubNav,Loading } from '../../Components'
 import { Container, Row } from 'react-bootstrap'
+import AdminEditBrand from '../Admin/AdminEditBrand';
 
 function Allbrands() {
   const [page, setPage] = useState(0)
@@ -31,7 +32,9 @@ function Allbrands() {
 
       {loading === false ?
       (brands ? brands.map((e,i) =>
+
             <BrandCard img={e.image} title={e.name}/>
+           
             ):<h1>لا يوجد ماركات</h1>) :
             <Loading />
           }

@@ -1,22 +1,22 @@
-import { useEffect,useState } from 'react'
+import { useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import * as Comp from '../../Components'
 import { useSelector,useDispatch } from 'react-redux'
-import getAllCategories from '../../Redux/Actions/CategoryActions'
+import getAllCategories,{getCategoriesByPg} from '../../Redux/Actions/CategoryActions'
 
+const Colors = ['#26a69a','#8d6e63','#e57373','#f48fb1','#81c784','#aed581','#7e57c2','#fff176','#7986cb']
 function AllCategory() {
   const data = useSelector(state=>state.categories.categories.data)
   const loading =useSelector(state=>state.categories.loading)
   const countOfpages = useSelector(state=>state.categories.categories)
   const dispatch = useDispatch()
-  const [page,setPage]=useState(0)
  
   useEffect(()=>{
-    dispatch(getAllCategories(page,12))
-  },[page,dispatch])
+    dispatch(getAllCategories(5))
+  },[])
   
   let pg = (e)=>{
-    setPage(e)
+    dispatch(getCategoriesByPg(e,5))
   }
 
   let pages =1
@@ -39,12 +39,12 @@ function AllCategory() {
         
         {loading === false?
         (data? data.map(e=>
-        <Comp.ElementCategory img={e.image} title={e.name} color={'#eed1ff'}/>)
+        <Comp.ElementCategory img={e.image} title={e.name} color={Colors[Math.floor(Math.random() * Colors.length)]}/>)
       :<h1>لا يوجد تصنيفات</h1>)
       :<Comp.Loading />} 
 
-        </Col>
         <Comp.Pagination pages={pages} pg={pg}/>
+        </Col>
         </Row>
         
     </Container>

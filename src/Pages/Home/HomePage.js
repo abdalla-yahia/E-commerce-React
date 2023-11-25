@@ -6,11 +6,11 @@ function HomePage() {
     <>
     <Comp.Slider/>
     <Container>
-    <Comp.MainCategory/>
+    <Comp.Categories/>
     <Comp.MostSold/>
     <Comp.Discount/>
     <Comp.NewClothes/>
-    <Comp.Brands />
+    <Comp.BrandsHome />
 
     </Container>
     </>
