@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react'
 import { Row } from 'react-bootstrap'
 import Title from '../Utility/Title-more'
 import BrandCard from './BrandCard'
-import getAllBrandsHook from '../../Redux/Actions/BrandsActions';
+import getAllBrandsHook, { GetBrand, GetBrandByPAge } from '../../Redux/Actions/BrandsActions';
 import { useSelector,useDispatch } from 'react-redux';
 import Paginations from '../Utility/Pagination';
 
@@ -10,19 +10,16 @@ function Brands({title,control}) {
   const brands = useSelector(state => state.brands.brands)
   const dispatch = useDispatch()
 
-  const [bagNum,setbagNum] = useState(0)
-  
-  const page = bagNum
+  let pages = 0 
+
   useEffect(()=> {
-    dispatch(getAllBrandsHook(page ,10))
-    
-  }, [dispatch,bagNum])
+    dispatch(getAllBrandsHook())
+  }, [dispatch,pages])
 
 
 const pg =(e)=>{
-  setbagNum(e)
+  dispatch(GetBrandByPAge(e,10))
 }
-let pages = 0 
 if(brands.paginationResult){
 pages = brands.paginationResult.numberOfPages
 }

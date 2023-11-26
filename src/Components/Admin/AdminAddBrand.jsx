@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 import { CreateBrand } from '../../Redux/Actions/BrandsActions'
+import {TostifyLiprary,notify} from '../../Components';
 
 function AdminAddBrand() {
 const [img, setImage]=useState(Pic.avatar)
@@ -13,8 +14,12 @@ const [path,setPath]=useState('')
 const dispatch = useDispatch()
 
 const UploadFileHandeller =(e)=>{
-  URL && setImage(URL.createObjectURL(e.target.files[0]))
-  setPath(e.target.files[0])
+  if(e.target.files[0]){
+    const img = URL.createObjectURL(e.target.files[0])
+    setImage(img)
+    setPath(e.target.files[0])
+  }
+  
 }
 const formData = new FormData()
 formData.append("name",name)
@@ -25,7 +30,9 @@ const UploadDataHandeller =()=>{
   dispatch(CreateBrand(formData))
   setName('')
   setImage(Pic.avatar)
-}
+  notify('success')
+}else 
+notify('warning')
 }
   return (
 
@@ -49,6 +56,8 @@ const UploadDataHandeller =()=>{
         </div>
         </div>
         </Col>
+        <TostifyLiprary/>
+        
     </Row>
 
   )

@@ -1,15 +1,23 @@
 import getAllHook,{CreateHook, DeleteteHook, UpdateHook} from "../../Hooks/Custom-Hooks";
-import {CREATE_BRAND, DELETE_BRAND, GET_ALL_BRANDS, GET_ONE_BRANDS, UPDATE_BRAND} from '../Types/Types'
+import {CREATE_BRAND, DELETE_BRAND,GET_BRANDS_BY_PG, GET_ALL_BRANDS, GET_ONE_BRANDS, UPDATE_BRAND} from '../Types/Types'
 
-const getAllBrandsHook =(page,e=10)=> async(dispatch) => {
-const brands = await getAllHook(`/api/v1/brands/?page=${page}&limit=${e}`)
+const getAllBrandsHook =(limit = 10)=> async(dispatch) => {
+const brands = await getAllHook(`/api/v1/brands/?limit=${limit}`)
         dispatch({
             type: GET_ALL_BRANDS,
             payload: brands.data
         })
 }
-export default getAllBrandsHook
+export default getAllBrandsHook;
 
+// Get one Brand 
+export const GetBrandByPAge =(page,limit=10) => async (dispatch) =>{
+    const brand = await getAllHook(`/api/v1/brands/?page=${page}&limit=${limit}`)
+    dispatch({
+        type: GET_BRANDS_BY_PG,
+        payload: brand.data
+    })
+}
 //Create a new instance of the current brands object
 export const CreateBrand =(formData)=>async (dispatch) => {
     const brand = await CreateHook('/api/v1/brands/',formData)
