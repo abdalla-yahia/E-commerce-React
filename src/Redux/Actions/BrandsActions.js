@@ -20,7 +20,11 @@ export const GetBrandByPAge =(page,limit=10) => async (dispatch) =>{
 }
 //Create a new instance of the current brands object
 export const CreateBrand =(formData)=>async (dispatch) => {
-    const brand = await CreateHook('/api/v1/brands/',formData)
+    const brand = await CreateHook('/api/v1/brands/',formData,{
+        headers:{
+            'Content-Type':'multipart/form-data'
+        }
+    })
     dispatch({
         type: CREATE_BRAND,
         payload: brand.data
@@ -46,6 +50,7 @@ export const UpdateBrand = (id,formData) => async (dispatch) => {
         payload: brand.data
     })
 }
+
 
 //Get a Specific Brand
 

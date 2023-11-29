@@ -5,12 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 import { CreateBrand } from '../../Redux/Actions/BrandsActions'
-import {TostifyLiprary,notify} from '../../Components';
+import {Loading, TostifyLiprary,notify} from '../../Components';
 
 function AdminAddBrand() {
 const [img, setImage]=useState(Pic.avatar)
 const [name,setName]=useState('')
 const [path,setPath]=useState('')
+const [loading,setLoading]=useState(true)
+
 const dispatch = useDispatch()
 
 const UploadFileHandeller =(e)=>{
@@ -25,9 +27,11 @@ const formData = new FormData()
 formData.append("name",name)
 formData.append("image",path)
 
-const UploadDataHandeller =()=>{
+const UploadDataHandeller = async ()=>{
   if(name!== '' && (img!== undefined || img!== Pic.avatar)){
-  dispatch(CreateBrand(formData))
+    setLoading(false)
+  await dispatch(CreateBrand(formData))
+  setLoading(true)
   setName('')
   setImage(Pic.avatar)
   notify('success')
@@ -40,9 +44,9 @@ notify('warning')
         <Col>
         <div className='d-flex flex-column gap-3'>
         <div className='d-flex justify-content-between w-75'>
-    <span>صورة التصنيف</span>
+    <span>صورة الماركة</span>
     <span onClick={()=>setImage(Pic.avatar)} style={{cursor:'pointer'}}>
-      <FontAwesomeIcon icon={faTrash}/>
+     {img !==Pic.avatar &&  <FontAwesomeIcon icon={faTrash}/> }
     </span>
       </div>
     <label htmlFor="UploadImg" style={{cursor:'pointer'}}>
@@ -56,6 +60,7 @@ notify('warning')
         </div>
         </div>
         </Col>
+        {loading === false && <Loading />}
         <TostifyLiprary/>
         
     </Row>

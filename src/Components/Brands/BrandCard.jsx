@@ -16,7 +16,8 @@ useEffect(()=>{
   dispatch(getAllBrandsHook())
 },[dispatch,ID])
 
-const GetBrandHandeller = async()=>{
+const GetBrandHandeller = async()=>{ 
+  
   await dispatch(GetBrand(id))
 }
 
@@ -34,10 +35,11 @@ const DeleteHandeller = ()=>{
               <span onClick={()=>{DeleteHandeller();setID(id)}}>
               <FontAwesomeIcon icon={faTrash} style={{cursor:'pointer'}}/>
               </span>
-              
-              <Link  to={`/adminhomepage/brands/:${id}`} onClick={()=>{GetBrandHandeller()}}>
+              <span onClick={()=>{GetBrandHandeller()}}>
+              <Link  to={`/adminhomepage/brands/:${id}`} >
               <FontAwesomeIcon icon={faEdit} style={{cursor:'pointer'}}/>
               </Link>
+              </span>
               </div>:<Card.Title>{title}</Card.Title>}
                 </Card.Footer>
             </Card>

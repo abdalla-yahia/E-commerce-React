@@ -32,6 +32,7 @@ const initialState = {
             case UPDATE_BRAND:
                 return{
                     ...state,
+                    onebrand:action.payload,
                     loading: false
                 }
             case GET_ONE_BRANDS :

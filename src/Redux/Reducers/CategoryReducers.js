@@ -24,13 +24,11 @@ const categoriesReducer = (state=initiaState, action) => {
         case CREATE_CATEGORY:
             return {
            ...state,
-           categories: action.payload,
            loading: false}
 
            case DELETE_CATEGORY:
             return {
           ...state,
-          categories: action.payload,
           loading: false}
         default:
             return state

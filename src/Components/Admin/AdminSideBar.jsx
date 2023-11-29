@@ -6,56 +6,56 @@ import { faProductHunt } from "@fortawesome/free-brands-svg-icons"
 function AdminSideBar() {
   return (
         <>
-        <div style={{backgroundColor:'#fff'}} className='py-3 rounded-2 d-flex gap-3 flex-column justify-content-start align-items-center'>
+        <div style={{backgroundColor:'#fff'}} className=' rounded-2 d-flex  flex-column justify-content-center pt-3 pb-5 align-items-center'>
                 
-            <div className="pt-3 admin-dash d-flex flex-wrap text-center justify-content-evenly align-items-center w-100">
-                <Link to='/adminhomepage/adminallorders' className="text-decoration-none text-dark w-100">
-                <FontAwesomeIcon className="admin-dash-icon " icon={faCartShopping}/>
+                <Link to='/adminhomepage/adminallorders' className="text-decoration-none text-dark w-100 d-flex ">
+            <div title='كل الطلبات' className=" admin-dash pt-3 d-flex flex-column  justify-content-center  align-items-center w-100">
+                <FontAwesomeIcon  className="admin-dash-icon " icon={faCartShopping}/>
                 <p className="admin-dash-title ">كل الطلبات</p>
-                </Link>
             </div>
-            <div className="pt-3 admin-dash d-flex flex-wrap text-center justify-content-evenly align-items-center w-100">
+                </Link>
                 <Link to='/adminhomepage/adminproductsedit' className="text-decoration-none text-dark w-100">
+            <div title='إدارة المنتجات ' className=" admin-dash pt-3 d-flex flex-column  justify-content-center  align-items-center w-100">
                 <FontAwesomeIcon className="admin-dash-icon " icon={faProductHunt}/>
                 <p className="admin-dash-title "> إدارة المنتجات</p>
-                </Link>
             </div>
-            <div className="pt-3 admin-dash d-flex flex-wrap text-center justify-content-evenly align-items-center w-100">
+                </Link>
                 <Link to='/adminhomepage/adminallbrands' className="text-decoration-none text-dark w-100">
+            <div title='إدارة الماركات' className=" admin-dash pt-3 d-flex flex-column  justify-content-center  align-items-center w-100">
                 <FontAwesomeIcon className="admin-dash-icon " icon={faBrain}/>
                 <p className="admin-dash-title "> إدارة الماركات</p>
-                </Link>
             </div>
-            <div className="pt-3 admin-dash d-flex flex-wrap text-center justify-content-evenly align-items-center w-100">
+                </Link>
                 <Link to='/adminhomepage/adminallcategories' className="text-decoration-none text-dark w-100">
+            <div title='إدارة التصنيفات' className=" admin-dash pt-3 d-flex flex-column  justify-content-center  align-items-center w-100">
                 <FontAwesomeIcon className="admin-dash-icon " icon={faCrutch}/>
                 <p className="admin-dash-title "> إدارة التصنيفات</p>
-                </Link>
             </div>
-            <div className="pt-3 admin-dash d-flex flex-wrap text-center justify-content-evenly align-items-center w-100">
+                </Link>
                 <Link to='/adminhomepage/adminbrandsedit' className="text-decoration-none text-dark w-100">
+            <div title='إضافة ماركة' className=" admin-dash pt-3 d-flex flex-column  justify-content-center  align-items-center w-100">
                 <FontAwesomeIcon className="admin-dash-icon " icon={faCopyright}/>
                 <p className="admin-dash-title "> إضافة ماركة</p>
-                </Link>
             </div>
-            <div className="pt-3 admin-dash d-flex flex-wrap text-center justify-content-evenly align-items-center w-100">
+                </Link>
                 <Link to='/adminhomepage/admineditcategory' className="text-decoration-none text-dark w-100">
+            <div title='إضافة تصنيف' className=" admin-dash pt-3 d-flex flex-column  justify-content-center  align-items-center w-100">
                 <FontAwesomeIcon className="admin-dash-icon " icon={faFilterCircleDollar}/>
                 <p className="admin-dash-title ">إضافة تصنيف </p>
-                </Link>
             </div>
-            <div className="pt-3 admin-dash d-flex flex-wrap text-center justify-content-evenly align-items-center w-100">
+                </Link>
                 <Link to='/adminhomepage/adminesubcategory' className="text-decoration-none text-dark w-100">
+            <div title='إضافة تصنيف فرعي' className=" admin-dash pt-3 d-flex flex-column  justify-content-center  align-items-center w-100">
                 <FontAwesomeIcon className="admin-dash-icon " icon={faDiagramSuccessor}/>
                 <p className="admin-dash-title "> إضافة تصنيف فرعي</p>
-                </Link>
             </div>
-            <div className="pt-3 admin-dash d-flex flex-wrap text-center justify-content-evenly align-items-center w-100">
+                </Link>
                 <Link to='/adminhomepage/admineaddproducts' className="text-decoration-none text-dark w-100">
+            <div title='إضافة منتج' className=" admin-dash pt-3 d-flex flex-column  justify-content-center  align-items-center w-100">
                 <FontAwesomeIcon className="admin-dash-icon " icon={faSquarePlus}/>
                 <p className="admin-dash-title "> إضافة منتج </p>
-                </Link>
             </div>
+                </Link>
             
 
 

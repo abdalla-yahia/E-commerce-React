@@ -1,8 +1,8 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect} from 'react'
 import { Row } from 'react-bootstrap'
 import Title from '../Utility/Title-more'
 import BrandCard from './BrandCard'
-import getAllBrandsHook, { GetBrand, GetBrandByPAge } from '../../Redux/Actions/BrandsActions';
+import getAllBrandsHook, {  GetBrandByPAge } from '../../Redux/Actions/BrandsActions';
 import { useSelector,useDispatch } from 'react-redux';
 import Paginations from '../Utility/Pagination';
 

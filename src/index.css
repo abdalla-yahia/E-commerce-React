@@ -89,13 +89,13 @@ display: none !important;
 }
 .admin-dash:hover  {
   background-color: black;
-  border-block-end: 1px solid blue;
+  border-block-end: 3px solid blue;
   
   .admin-dash-title{
     color: #fff !important;
   }
   .admin-dash-icon{
-    color: rgb(74, 74, 160) !important;
+    color: red !important;
 }
 }
 @media (max-width:767px) {

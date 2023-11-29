@@ -5,6 +5,7 @@ import {CreateCategory} from '../../Redux/Actions/CategoryActions';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import {Loading,TostifyLiprary,notify} from '../.';
 
 function AdminAddCategory() {
 const dispatch = useDispatch();
@@ -12,21 +13,28 @@ const dispatch = useDispatch();
 const [name,setName] = useState('');
 const [img,setImage] = useState(Pic.avatar)
 const [path, setPath] = useState('')
+const [loading,setLoading]=useState(true)
 
 const UploadFileHandeller = (e)=>{
- URL && setImage(URL.createObjectURL(e.target.files[0]));
-  setPath(e.target.files[0]);
+  if(e.target.files[0]){
+    const img = URL.createObjectURL(e.target.files[0])
+    setImage(img)
+    setPath(e.target.files[0])
+  }
 }
 const formDAta = new FormData()
 formDAta.append("name",name)
 formDAta.append("image",path)
 
-const sendDataHandeller =()=>{
+const sendDataHandeller = async ()=>{
   if(name !== '' && (img !== undefined || img !== Pic.avatar)){
-  dispatch(CreateCategory(formDAta))
+    setLoading(false)
+  await dispatch(CreateCategory(formDAta))
+  setLoading(true)
+  notify('success')
   setName('')
   setImage(Pic.avatar)
-}
+}else notify('warning')
 }
   return (
     <Row>
@@ -36,7 +44,7 @@ const sendDataHandeller =()=>{
       <div className='d-flex justify-content-between w-75'>
     <span>صورة التصنيف</span>
     <span onClick={()=>setImage(Pic.avatar)} style={{cursor:'pointer'}}>
-      <FontAwesomeIcon icon={faTrash}/>
+    {img !==Pic.avatar &&  <FontAwesomeIcon icon={faTrash}/> }
     </span>
       </div>
     <label htmlFor="UploadImg" style={{cursor:'pointer'}}>
@@ -48,6 +56,8 @@ const sendDataHandeller =()=>{
         <button onClick={()=>sendDataHandeller()} className='btn btn-dark'>حفظ التعديلات</button>
     </div>
     </div>
+    {loading === false && <Loading />}
+    <TostifyLiprary />
     </Col>
 </Row>
   )

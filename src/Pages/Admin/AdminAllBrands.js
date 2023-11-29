@@ -15,10 +15,10 @@ function AdminAllBrands() {
 </Col>
 </Row>
 <Row className='flex-nowrap'>
-    <Col sm='3' lg='3' md='4' xs='4'>
-    <Comp.AdminSideBar />
-    </Col>
-    <Col sm='9' lg='9' md='8' xs='8'>
+<Col sm='3' lg='2' md='3' xs='3'>
+            <Comp.AdminSideBar />
+            </Col>
+            <Col sm='9' lg='10' md='9' xs='9'>
     <Comp.Brands title={false} control={true}/>
     
     </Col>
