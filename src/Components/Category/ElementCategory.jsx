@@ -2,16 +2,16 @@ import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Card } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
-import getAllCategories, {DeleteCategory} from '../../Redux/Actions/CategoryActions'
+import {DeleteCategory} from '../../Redux/Actions/CategoryActions'
 import { useEffect,useState } from 'react'
 
-function ElementCategory({img,color,title,control,id}) {
+function ElementCategory({img,color,title,control,id,getID}) {
 const dispatch = useDispatch()
 const [ID,setID] = useState('')
 
 useEffect(()=>{
-dispatch(getAllCategories(5))
-},[dispatch,ID])
+getID(ID)
+},[ID])
 
 const DeleteHandeller =()=>{
   dispatch(DeleteCategory(id))

@@ -1,9 +1,9 @@
 import {GET_ALL_CATEGORIES,CREATE_CATEGORY,DELETE_CATEGORY,GET_CATEGORY_BY_BG} from '../Types/Types'
 import getAllHook,{CreateHook,DeleteteHook} from '../../Hooks/Custom-Hooks';
 
-const getAllCategories =  (e) => async (dispatch) => { 
+const getAllCategories =  (limit) => async (dispatch) => { 
     try {
-        const response = await getAllHook(`/api/v1/categories/?limit=${e}`)
+        const response = await getAllHook(`/api/v1/categories/?&limit=${limit}`)
         
         dispatch({
             type: GET_ALL_CATEGORIES,
@@ -15,9 +15,9 @@ const getAllCategories =  (e) => async (dispatch) => {
 }
 export default getAllCategories
 
-export const getCategoriesByPg = (page,e=10) => async (dispatch) => { 
+export const getCategoriesByPg = (page,limit) => async (dispatch) => { 
     try {
-        const response =await getAllHook(`/api/v1/categories/?page=${page}&limit=${e}`)
+        const response =await getAllHook(`/api/v1/categories/?page=${page}&limit=${limit}`)
         
         dispatch({
             type: GET_CATEGORY_BY_BG,

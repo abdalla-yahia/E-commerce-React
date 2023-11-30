@@ -2,7 +2,8 @@ import {CREATE_BRAND, DELETE_BRAND, GET_BRANDS_BY_PG ,GET_ALL_BRANDS, GET_ONE_BR
 const initialState = {
     brands: [],
     onebrand:{},
-    loading: true
+    loading: true,
+    
 }
 
  const BrandsReducer = (state = initialState, action) => {
@@ -22,7 +23,7 @@ const initialState = {
             case CREATE_BRAND:
                 return{
                     ...state,
-                    loading: false
+                    loading: false,
             }
             case DELETE_BRAND:
                 return{

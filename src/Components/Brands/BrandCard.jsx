@@ -1,23 +1,24 @@
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Card, Col } from 'react-bootstrap';
-import getAllBrandsHook, {DeleteBrand,GetBrand} from '../../Redux/Actions/BrandsActions';
+import {DeleteBrand,GetBrand} from '../../Redux/Actions/BrandsActions';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useEffect,useState } from 'react';
 import { notify } from '../Utility/TostifyLiprary';
 import {TostifyLiprary} from '../.'
 
-function BrandCard({img,title,control,id}) {
+function BrandCard({img,title,control,id,getId}) {
+
   const [ID,setID] = useState('')
   const dispatch = useDispatch()
 
+
 useEffect(()=>{
-  dispatch(getAllBrandsHook())
-},[dispatch,ID])
+  getId(ID)
+},[ID])
 
 const GetBrandHandeller = async()=>{ 
-  
   await dispatch(GetBrand(id))
 }
 

@@ -13,6 +13,7 @@ const [name,setName]=useState('')
 const [path,setPath]=useState('')
 const [loading,setLoading]=useState(true)
 
+
 const dispatch = useDispatch()
 
 const UploadFileHandeller =(e)=>{
@@ -30,11 +31,12 @@ formData.append("image",path)
 const UploadDataHandeller = async ()=>{
   if(name!== '' && (img!== undefined || img!== Pic.avatar)){
     setLoading(false)
-  await dispatch(CreateBrand(formData))
-  setLoading(true)
-  setName('')
-  setImage(Pic.avatar)
-  notify('success')
+    await dispatch(CreateBrand(formData))
+    setLoading(true)
+    setName('')
+    setImage(Pic.avatar)
+    notify('success')
+ 
 }else 
 notify('warning')
 }
