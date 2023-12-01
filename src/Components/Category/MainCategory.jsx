@@ -9,12 +9,14 @@ import Paginations from "../Utility/Pagination";
 const Colors = ['#26a69a','#8d6e63','#e57373','#f48fb1','#81c784','#aed581','#7e57c2','#fff176','#7986cb']
 function MainCategory({title,control}) {
   const [ID,setID] = useState('')
-  const dispatch = useDispatch()
   const categories = useSelector(state=>state.categories.categories)
+  const dispatch = useDispatch()
+
+
   const getID =(id)=>{
     setID(id)
   }
-  let pages = 2
+  let pages = 0
   
   useEffect(()=>{
     dispatch(getAllCategories(5))

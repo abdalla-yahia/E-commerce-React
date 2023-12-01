@@ -10,15 +10,18 @@ function Categories({title}) {
   const [ID,setID]= useState('')
   const dispatch = useDispatch()
   const categories = useSelector(state=>state.categories.categories)
-  
+  console.log(categories)
 const getID =(id)=>{
   setID(id)
 }
+let pages = 0
 useEffect(()=>{
 dispatch(getAllCategories())
-},[dispatch,ID])
+},[dispatch,ID,pages])
   
-
+if(categories.paginationResult){
+  pages = categories.paginationResult.numberOfPages
+}
 
   return (
     <>
