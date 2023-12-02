@@ -12,7 +12,6 @@ const SubCategoryReducer = (state = initialState, action) => {
         case CREATE_SUB_CATEGORY:
             return {
             ...state,
-                subCategories: action.payload,
                 loading: false,
             }
             case GET_ALL_SUB_CATEGORY:

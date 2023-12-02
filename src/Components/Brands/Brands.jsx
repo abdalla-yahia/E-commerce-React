@@ -1,32 +1,12 @@
-import React,{useEffect, useState} from 'react'
 import { Row } from 'react-bootstrap'
 import Title from '../Utility/Title-more'
 import BrandCard from './BrandCard'
-import getAllBrandsHook, {  GetBrandByPAge } from '../../Redux/Actions/BrandsActions';
-import { useSelector,useDispatch } from 'react-redux';
 import Paginations from '../Utility/Pagination';
+import GetAllBrandsHooks from '../../Hook/Brands/Get-all-brands-hook'
 
 function Brands({title,control}) {
-  const [ID,setID]=useState('')
-  const brands = useSelector(state => state.brands.brands)
   
-  const dispatch = useDispatch()
-  let pages = 0 
-
-  const getId = (id) => {
-    setID(id)
-  }
-
-  useEffect(()=> {
-    dispatch(getAllBrandsHook(6))
-  }, [dispatch,pages,ID])
-  
-  const pg =(e)=>{
-    dispatch(GetBrandByPAge(e,6))
-  }
-if(brands.paginationResult){
-pages = brands.paginationResult.numberOfPages
-}
+const [brands,pg,getId,pages] = GetAllBrandsHooks()
   return (
     <>
        {title === undefined? <Title status={true} title={'البراندات'} more={'المزيد....'} path={'/allbrands'}/>

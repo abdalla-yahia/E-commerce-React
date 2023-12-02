@@ -28,7 +28,6 @@ export const createSubCategory = (id,name) => async (dispatchEvent) => {
        dispatchEvent({
         type: CREATE_SUB_CATEGORY,
         payload: res.data,
-        loading: false,
        })
     
    } catch (error) {

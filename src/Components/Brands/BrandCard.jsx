@@ -1,31 +1,19 @@
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Card, Col } from 'react-bootstrap';
-import {DeleteBrand,GetBrand} from '../../Redux/Actions/BrandsActions';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useEffect,useState } from 'react';
-import { notify } from '../Utility/TostifyLiprary';
 import {TostifyLiprary} from '../.'
+import DeleteEditBrandsHooks from '../../Hook/Brands/Delete&EditBrands-Hooks'
+import { useEffect } from 'react';
 
 function BrandCard({img,title,control,id,getId}) {
 
-  const [ID,setID] = useState('')
-  const dispatch = useDispatch()
+  const [ID,setID, GetBrandHandeller, DeleteHandeller] = DeleteEditBrandsHooks(id,getId)
+ 
+  useEffect(()=>{
+    getId(ID)
+  },[ID])
 
-
-useEffect(()=>{
-  getId(ID)
-},[ID])
-
-const GetBrandHandeller = async()=>{ 
-  await dispatch(GetBrand(id))
-}
-
-const DeleteHandeller = ()=>{
-  dispatch(DeleteBrand(id))
-  notify('success')
-}
   return (
     <>
     <Col xm='12' sm='6' md='4' lg='2' className='mb-3 d-flex justify-content-center' >
@@ -33,10 +21,10 @@ const DeleteHandeller = ()=>{
                 <Card.Img src={img} style={{minHeight:'125px'}}/>
                 <Card.Footer className='text-center'>
             {control ?<div className='d-flex justify-content-between px-2'>
-              <span onClick={()=>{DeleteHandeller();setID(id)}}>
+              <span onClick={()=>{DeleteHandeller(id);setID(id)}}>
               <FontAwesomeIcon icon={faTrash} style={{cursor:'pointer'}}/>
               </span>
-              <span onClick={()=>{GetBrandHandeller()}}>
+              <span onClick={()=>{GetBrandHandeller(id)}}>
               <Link  to={`/adminhomepage/brands/:${id}`} >
               <FontAwesomeIcon icon={faEdit} style={{cursor:'pointer'}}/>
               </Link>

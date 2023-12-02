@@ -1,33 +1,11 @@
 import { Col, Container, Row } from "react-bootstrap"
 import ElementCategory from "./ElementCategory";
 import Title from "../Utility/Title-more";
-import getAllCategories,{getCategoriesByPg} from "../../Redux/Actions/CategoryActions";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
 import Paginations from "../Utility/Pagination";
-
+import GetAllCategoriesHooks from '../../Hook/Category/Get-All-Categories-Hools'
 const Colors = ['#26a69a','#8d6e63','#e57373','#f48fb1','#81c784','#aed581','#7e57c2','#fff176','#7986cb']
 function MainCategory({title,control}) {
-  const [ID,setID] = useState('')
-  const categories = useSelector(state=>state.categories.categories)
-  const dispatch = useDispatch()
-
-
-  const getID =(id)=>{
-    setID(id)
-  }
-  let pages = 0
-  
-  useEffect(()=>{
-    dispatch(getAllCategories(5))
-  },[dispatch,pages,ID])
-  
-  const pg =(e)=>{
-    dispatch(getCategoriesByPg(e,5))
-  }
-  if(categories.paginationResult){
-    pages = categories.paginationResult.numberOfPages
-  }
+const [pages,,getID,pg,,,categories] = GetAllCategoriesHooks()
 
   return (
     <>
