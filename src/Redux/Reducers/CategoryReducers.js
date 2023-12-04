@@ -1,7 +1,8 @@
-import {GET_ALL_CATEGORIES,CREATE_CATEGORY, DELETE_CATEGORY, GET_CATEGORY_BY_BG} from '../Types/Types'
+import {GET_ALL_CATEGORIES,CREATE_CATEGORY, DELETE_CATEGORY, GET_CATEGORY_BY_BG, GET_ONE_CATEGORY} from '../Types/Types'
 
 const initiaState = {
     categories: [],
+    oneCategory:{},
     loading: true
 }
 
@@ -14,6 +15,12 @@ const categoriesReducer = (state=initiaState, action) => {
                 categories: action.payload,
                 loading: false
             }
+            case GET_ONE_CATEGORY:
+                return {
+              ...state,
+                oneCategory: action.payload,
+                loading: false
+                }
         case GET_CATEGORY_BY_BG:
             return {
             ...state,

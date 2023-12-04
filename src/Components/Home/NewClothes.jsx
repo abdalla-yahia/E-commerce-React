@@ -1,21 +1,24 @@
 import React from 'react'
 import { Row } from 'react-bootstrap'
 import Title from '../Utility/Title-more'
-import { prod1 } from '../../Assets'
 import {ProductCart} from '../.'
+import GetAllproductsHook from '../../Hook/Products/Get-All-products-Hook'
 
 function NewClothes() {
+  const [products] = GetAllproductsHook()
+
   return (
     <>
             <Title status={true} more={'المزيد ....'} title={'أحدث الأزياء'} path={'/allproducts'}/>
         
             <Row>
-            <ProductCart fav={true} car={true} img={prod1} price={'15000 جنية'} rating={4.7} title={'لاب توب ماك '} Description={'أحدث لاب توب والأقوي والاسرع' }/>
-            <ProductCart fav={true} car={true} img={prod1} price={'15000 جنية'} rating={4.7} title={'لاب توب ماك '} Description={'أحدث لاب توب والأقوي والاسرع' }/>
-            <ProductCart fav={true} car={true} img={prod1} price={'15000 جنية'} rating={4.7} title={'لاب توب ماك '} Description={'أحدث لاب توب والأقوي والاسرع' }/>
-            <ProductCart fav={true} car={true} img={prod1} price={'15000 جنية'} rating={4.7} title={'لاب توب ماك '} Description={'أحدث لاب توب والأقوي والاسرع' }/>
-            <ProductCart fav={true} car={true} img={prod1} price={'15000 جنية'} rating={4.7} title={'لاب توب ماك '} Description={'أحدث لاب توب والأقوي والاسرع' }/>
-            <ProductCart fav={true} car={true} img={prod1} price={'15000 جنية'} rating={4.7} title={'لاب توب ماك '} Description={'أحدث لاب توب والأقوي والاسرع' }/>
+            {
+            products.data && products.data.map(e=>
+              
+                <ProductCart img={e.imageCover} title={e.title} Description={e.description} price={e.price} rating={e.rating} fav={true} car={true} id={e._id} cat={e.category} brand={e.brand}/>
+              
+            )
+          }
             </Row>
     </>
   )

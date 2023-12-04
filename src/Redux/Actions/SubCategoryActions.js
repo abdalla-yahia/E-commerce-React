@@ -8,9 +8,9 @@ const getAllSubCategory = (id) => async (dispatchEvent) => {
         const res = await getAllHook(`/api/v1/categories/${id}/subcategories`);
         dispatchEvent({
             type: GET_ALL_SUB_CATEGORY,
-            payload: res.data,
-            loading: false,
+            payload: res.data
         })
+        console.log(res.status)
     
     } catch (error) {
         console.log(error);

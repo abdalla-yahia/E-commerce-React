@@ -1,5 +1,5 @@
 import getAllHook,{CreateHook, DeleteteHook, UpdateHook} from "../../Hooks/Custom-Hooks";
-import {CREATE_BRAND, DELETE_BRAND,GET_BRANDS_BY_PG, GET_ALL_BRANDS, GET_ONE_BRANDS, UPDATE_BRAND} from '../Types/Types'
+import {CREATE_BRAND, DELETE_BRAND,GET_BRANDS_BY_PG, GET_ALL_BRANDS, GET_ONE_BRANDS, UPDATE_BRAND, GET_ONE_BRAND} from '../Types/Types'
 
 const getAllBrandsHook =(limit)=> async(dispatch) => {
 const brands = await getAllHook(`/api/v1/brands/?limit=${limit}`)
@@ -9,6 +9,15 @@ const brands = await getAllHook(`/api/v1/brands/?limit=${limit}`)
         })
 }
 export default getAllBrandsHook;
+
+// Get A Specific Brand
+export const getOneBrand =(id)=> async(dispatch) => {
+    const brands = await getAllHook(`/api/v1/brands/${id}`)
+            dispatch({
+                type: GET_ONE_BRAND,
+                payload: brands.data
+            })
+    }
 
 // Get one Brand 
 export const GetBrandByPAge =(page,limit) => async (dispatch) =>{

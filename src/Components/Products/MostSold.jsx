@@ -1,19 +1,25 @@
 import { Row } from 'react-bootstrap'
 import Title from '../Utility/Title-more'
-import * as Pic from '../../Assets';
 import ProductCart from './ProductCart';
+import GetAllproductsHook from '../../Hook/Products/Get-All-products-Hook';
+
+
 function MostSold() {
+const [products] = GetAllproductsHook()
+
   return (
     <>
         <Title title={'الأكثر مبيعاً'} more ={'....المزيد'} status={true} path={'/allproducts'}/>
         <Row>
-        <ProductCart fav={true} car={true}  img={Pic.mobile} price={'5500 جنيه'} title={' موبايل أي فون'} Description={'موبايل أي فون الفئة الحديثة موديل 2024'} rating={'4.3'}/>
-        <ProductCart fav={true} car={true}  img={Pic.mobile} price={'5500 جنيه'} title={' موبايل أي فون'} Description={'موبايل أي فون الفئة الحديثة موديل 2024'} rating={'4.3'}/>
-        <ProductCart fav={true} car={true}  img={Pic.mobile} price={'5500 جنيه'} title={' موبايل أي فون'} Description={'موبايل أي فون الفئة الحديثة موديل 2024'} rating={'4.3'}/>
-        <ProductCart fav={true} car={true}  img={Pic.mobile} price={'5500 جنيه'} title={' موبايل أي فون'} Description={'موبايل أي فون الفئة الحديثة موديل 2024'} rating={'4.3'}/>
-        <ProductCart fav={true} car={true}  img={Pic.mobile} price={'5500 جنيه'} title={' موبايل أي فون'} Description={'موبايل أي فون الفئة الحديثة موديل 2024'} rating={'4.3'}/>
-        <ProductCart fav={true} car={true}  img={Pic.mobile} price={'5500 جنيه'} title={' موبايل أي فون'} Description={'موبايل أي فون الفئة الحديثة موديل 2024'} rating={'4.3'}/>
-        </Row>
+          {
+            products.data && products.data.map(e=>
+              
+                <ProductCart img={e.imageCover} title={e.title} Description={e.description} price={e.price} rating={e.rating} fav={true} car={true} id={e._id} cat={e.category} brand={e.brand}/>
+              
+            )
+          }
+       
+       </Row>
     </>
   )
 }

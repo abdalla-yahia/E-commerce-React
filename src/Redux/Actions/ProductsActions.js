@@ -1,12 +1,12 @@
 
-import { CREATE_PRODUCT, GET_ALL_PRODUCTS } from "../Types/Types";
-import { CreateHook } from "../../Hooks/Custom-Hooks";
+import { CREATE_PRODUCT, GET_ALL_PRODUCTS, GET_ONE_PRODUCT } from "../Types/Types";
+import getAllHook, { CreateHook } from "../../Hooks/Custom-Hooks";
 
 //Get All Products
 
 export const getAllProducts = () => async (dispatch) => {
     try {
-        const res = await CreateHook(`/api/v1/products`);
+        const res = await getAllHook(`/api/v1/products`);
         
         dispatch({
             type: GET_ALL_PRODUCTS,
@@ -30,3 +30,19 @@ export const createProduct = (formdata) => async (dispatch) => {
         console.log(error);
     }
 };
+
+// Get a Specific Product
+
+export const getProduct = (id) => async (dispatch) => {
+    try {
+        const res = await getAllHook(`/api/v1/products/${id}`);
+        
+        dispatch({
+            type: GET_ONE_PRODUCT,
+            payload: res.data,
+        });
+    } catch (error) {
+        console.log(error);
+    }
+};
+

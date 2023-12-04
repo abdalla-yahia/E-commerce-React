@@ -3,15 +3,12 @@ import * as Pic from '../../Assets'
 import 'react-image-gallery/styles/css/image-gallery.css';
 import { Col } from 'react-bootstrap';
 
-function ProductsImgSlider() {
-    const images = [
-        {original:Pic.mobile,thumbnail:Pic.mobile},
-        {original:Pic.mobile1,thumbnail:Pic.mobile1},
-        {original:Pic.mobile2,thumbnail:Pic.mobile2},
-        {original:Pic.mobile,thumbnail:Pic.mobile},
-        {original:Pic.mobile1,thumbnail:Pic.mobile1},
-        {original:Pic.mobile2,thumbnail:Pic.mobile2},
-    ]
+function ProductsImgSlider({imgs}) {
+  
+    let images =[]
+    if(imgs){
+      images = imgs.map(e=>{return {original:e,thumbnail:e}})
+    }
   return (
     <>
     <Col sm='4' lg="3" style={{minHeight:'500px',backgroundColor:'#fff',marginTop:'20px',borderRadius:'10px',padding:'10px'}}>

@@ -1,4 +1,4 @@
-import {CREATE_BRAND, DELETE_BRAND, GET_BRANDS_BY_PG ,GET_ALL_BRANDS, GET_ONE_BRANDS, UPDATE_BRAND} from '../Types/Types'
+import {CREATE_BRAND, DELETE_BRAND, GET_BRANDS_BY_PG ,GET_ALL_BRANDS, GET_ONE_BRANDS, UPDATE_BRAND, GET_ONE_BRAND} from '../Types/Types'
 const initialState = {
     brands: [],
     onebrand:{},
@@ -13,6 +13,12 @@ const initialState = {
                 ...state,
                     brands: action.payload,
                     loading: false
+            }
+            case GET_ONE_BRAND:
+            return {
+              ...state,
+                onebrand: action.payload,
+                loading: false
             }
             case GET_BRANDS_BY_PG:
                 return {
