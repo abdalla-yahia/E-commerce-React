@@ -15,4 +15,8 @@ export const CREATE_PRODUCT = 'CREATE_PRODUCT '
 export const GET_ONE_PRODUCT = 'GET_ONE_PRODUCT '
 export const GET_ONE_CATEGORY = 'GET_ONE_CATEGORY '
 export const GET_ONE_BRAND = 'GET_ONE_BRAND '
+export const GET_ALL_REVIEWERS = 'GET_ALL_REVIEWERS '
+export const CREATE_REVIEW = 'CREATE_REVIEW '
+export const GET_ALL_USERS = 'GET_ALL_USERS '
+export const AUTH_NEW_USER = 'AUTH_NEW_USER '
 

@@ -1,18 +1,19 @@
 import React from 'react'
 import * as Comp from '../../Components'
 import { Container, Row } from 'react-bootstrap'
-import * as Pic from '../../Assets'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getProduct } from '../../Redux/Actions/ProductsActions'
+import { getAllProducts, getProduct } from '../../Redux/Actions/ProductsActions'
 import { getOneCategory } from '../../Redux/Actions/CategoryActions'
 import { getOneBrand } from '../../Redux/Actions/BrandsActions'
+
 function ProductPageDetails() {
 
   const id = window.localStorage.getItem('ID')
   const cat = window.localStorage.getItem('cat')
   const brand = window.localStorage.getItem('brand')
 
+  const Allproducts = useSelector(state=>state.products.products)
   const products = useSelector(state=>state.products.oneProduct)
   const oneCategory  = useSelector(state=>state.categories.oneCategory)
   const oneBrand  = useSelector(state=>state.brands.onebrand)
@@ -29,7 +30,9 @@ function ProductPageDetails() {
       
     },[id,dispatch,cat,brand])
 
-
+    useEffect(()=>{
+      dispatch(getAllProducts())
+},[])
   return (
     <div style={{minHeight:'670px'}}>
     <Comp.SubNav />
@@ -50,14 +53,13 @@ function ProductPageDetails() {
       </Row>
       <Row>
         <Comp.Title title={'منتجات قد تعجبك'}/>
-        <Comp.ProductCart fav={true} car={true} img={Pic.Prod3} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
-        <Comp.ProductCart fav={true} car={true} img={Pic.prod1} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
-        <Comp.ProductCart fav={true} car={true} img={Pic.Prod4} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
-        <Comp.ProductCart fav={true} car={true} img={Pic.mobile} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
-        <Comp.ProductCart fav={true} car={true} img={Pic.mobile2} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
-        <Comp.ProductCart fav={true} car={true} img={Pic.mobile1} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
-        <Comp.ProductCart fav={true} car={true} img={Pic.Prod3} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
-        <Comp.ProductCart fav={true} car={true} img={Pic.prod1} title={'أدوات مطبخ'} Description={'أي كلام مش مهم خالص'} price={'3200 جنية'} rating={4.5}/>
+        {
+          Allproducts.data && Allproducts.data.map(e=>
+
+            <Comp.ProductCart cat={e.category} brand={e.brand} fav={true} car={true} img={e.imageCover} title={e.title} Description={e.description} price={e.price} rating={4.5} id={e._id}/>
+          )
+        }
+        
       </Row>
     </Container>
     </div>
@@ -65,5 +67,3 @@ function ProductPageDetails() {
 }
 
 export default ProductPageDetails
-
-//بلوزة حريمي بجودة عالية فى التفصيل وخامة عالية فى التصنيع واريحية كبيرة فى الحركة لما تحتوية من اجود انواع الخيوط العالمية 

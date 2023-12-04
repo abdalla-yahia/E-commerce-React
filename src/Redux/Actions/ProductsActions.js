@@ -7,7 +7,7 @@ import getAllHook, { CreateHook } from "../../Hooks/Custom-Hooks";
 export const getAllProducts = () => async (dispatch) => {
     try {
         const res = await getAllHook(`/api/v1/products`);
-        
+        console.log(res.status)
         dispatch({
             type: GET_ALL_PRODUCTS,
             payload: res.data,
@@ -21,7 +21,7 @@ export const getAllProducts = () => async (dispatch) => {
 export const createProduct = (formdata) => async (dispatch) => {
     try {
         const res = await CreateHook(`/api/v1/products`, formdata);
-        
+        console.log(res.status)
         dispatch({
             type: CREATE_PRODUCT,
             payload: res.data,
@@ -36,7 +36,7 @@ export const createProduct = (formdata) => async (dispatch) => {
 export const getProduct = (id) => async (dispatch) => {
     try {
         const res = await getAllHook(`/api/v1/products/${id}`);
-        
+        console.log(res.status)
         dispatch({
             type: GET_ONE_PRODUCT,
             payload: res.data,

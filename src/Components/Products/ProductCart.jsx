@@ -2,17 +2,21 @@ import { Card, CardFooter, Col } from "react-bootstrap"
 import { rate,favOff,favOn,cart } from "../../Assets"
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { faCartPlus,faCartShopping, faEdit, faHeart, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { useDispatch } from "react-redux"
 import { getProduct } from "../../Redux/Actions/ProductsActions"
+import { faHeart as faHeart2 } from "@fortawesome/free-regular-svg-icons"
+import { useState } from "react"
 function ProductCart({img,title,Description,price,rating,fav,car,contr,id,cat,brand}) {
+  const [isadd, setIsAdd] = useState(false)
+  const [isfav, setIsFav] = useState(false)
   const dispatch = useDispatch()
 
   const favHandeller =(e)=>{
-    e.target.src === favOff ? e.target.src=favOn : e.target.src = favOff
+    setIsFav(!isfav)
   }
   const CartHandeller = (e)=>{
-
+    setIsAdd(!isadd)
   }
   return (
     <>
@@ -29,15 +33,18 @@ function ProductCart({img,title,Description,price,rating,fav,car,contr,id,cat,br
         </Card.Text>
       </Card.Body>
         <div className="d-flex justify-content-between align-items-end w-100 " >
-         { fav && <img style={{cursor:'pointer'}} onClick={(e)=>favHandeller(e)} src={favOff} alt="vav" width={30} /> }
-         { car && <img style={{cursor:'pointer',filter:'invert(2)'}} onClick={(e)=>CartHandeller(e)} src={cart} alt="vav" width={30} />}
+         { fav && (isfav === true?<FontAwesomeIcon style={{cursor:'pointer',fontSize:'30px',color:'#44b64a'}} onClick={(e)=>favHandeller(e)} icon={faHeart}  />:
+         <FontAwesomeIcon style={{cursor:'pointer',fontSize:'28px',color:'#37474F'}} onClick={(e)=>favHandeller(e)} icon={faHeart2}  />) }
+         { car && (isadd === true?<FontAwesomeIcon style={{cursor:'pointer',color:'#44b64a',fontSize:'30px'}} onClick={(e)=>CartHandeller(e)} icon={faCartShopping} />:
+         
+         <FontAwesomeIcon style={{cursor:'pointer',fontSize:'28px',color:'#37474F'}} onClick={(e)=>CartHandeller(e)} icon={faCartPlus}  />)}
         </div>
       <CardFooter className="w-100">
       <div className="d-flex justify-content-between w-100" >
             <div className="rating" style={{color:'gold',fontSize:'20px',fontWeight:'bolder'}}>{rating}
             <img src={rate} alt="rate" width={20} />
             </div>
-            <div className="price">{price}</div>
+            <div className="price">{price} جنية</div>
         </div>
       </CardFooter>
      {contr&& <Card.Footer className="w-100">
