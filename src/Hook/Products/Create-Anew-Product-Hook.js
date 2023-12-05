@@ -68,14 +68,13 @@ function CreateAnewProductHook() {
   // Send Data Of Produc to the server
   const sendDataHNDELLER = async () => {
     if (
-      ID !== "" &&
-      subcategory.length !== 0 &&
+      Object.keys(images).length !== 0&&
       name !== "" &&
-      brand !== "" &&
-      description !== "" &&
+      description !== "" && description.length >=50 &&
       netPrice !== 0 &&
-      quantity !== 0 &&
-      images.length !== 0
+      quantity !== 0&& 
+      ID !== "" &&
+      brand !== "" 
     ) {
       const ImgCover = dataURLtoFile(newImages[0], Math.random() + ".png");
       const formdata = new FormData();
@@ -95,7 +94,7 @@ function CreateAnewProductHook() {
       subcategory.map((e) => formdata.append("subcategory", e));
 
       dispatch(createProduct(formdata));
-      notify("success");
+      notify("success",'تمت إضافة المنتج بنجاح 👍');
 
       setID("");
       setSubCategor([]);
@@ -110,7 +109,15 @@ function CreateAnewProductHook() {
       setShowColors("");
       state.options = [];
     } else {
-      notify("warning");
+      let msg = Object.keys(images).length ===0 ? 'من فضلك إختر صورة المنتج':
+      name === "" ? 'من فضلك أكتب اسم المنتج' :
+      description === "" ? 'من فضلك اكتب وصف للمنتج':
+      description.length < 50 ? ' من فضلك اكتب وصف كبير  للمنتج لا يقل عن 50 حرف':
+      netPrice === '' || netPrice === 0 ? 'من فضلك اكتب سعر المنتج' :
+      quantity === '' ? 'اكتب الكمية المتاحة للبيع' :
+      ID === "" ?'يجب اختيار تصنيف للمنتج':
+      brand === "" ?"يجب اختيار ماركة المنتج" :null
+      notify("warning",msg);
     }
   };
   // Calling the dispatcher
@@ -152,3 +159,4 @@ function CreateAnewProductHook() {
 }
 
 export default CreateAnewProductHook;
+

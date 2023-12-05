@@ -5,13 +5,15 @@ import GetAllproductsHook from '../../Hook/Products/Get-All-products-Hook'
 
 function ShopingProductsPage() {
   const [products] = GetAllproductsHook()
+  let count = products.data&&products.data.length
+  let title = count <=0 ?'لا يوجد منتجات متاحة' :count === 1 || count >=11?'منتج متاح' :'منتجات متاحة'
   return (
     <>
     <Container>
     <Row>
     <SubNav />
     <div className='d-flex justify-content-between'>
-      <SubTitleProducts/>
+      <SubTitleProducts title={title} count={count}/>
       <DrobDown/>
     </div>
       <Col lg='2' sm={2}>

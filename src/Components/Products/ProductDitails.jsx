@@ -4,7 +4,7 @@ import {Link } from 'react-router-dom'
 function ProductDitails({cat,title,describtion,price,colors,brand}) {
 
   return (
-    <Col sm='8' lg="9">
+    <Col sm='8' lg="8">
         <Container>
     <div className='d-flex mt-3 flex-column justify-content-start' style={{minHeight:'670px'}}>
             

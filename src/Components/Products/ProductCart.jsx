@@ -1,10 +1,10 @@
 import { Card, CardFooter, Col } from "react-bootstrap"
-import { rate,favOff,favOn,cart } from "../../Assets"
+import { rate } from "../../Assets"
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCartPlus,faCartShopping, faEdit, faHeart, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { useDispatch } from "react-redux"
-import { getProduct } from "../../Redux/Actions/ProductsActions"
+import { getProduct,deleteProduct } from "../../Redux/Actions/ProductsActions"
 import { faHeart as faHeart2 } from "@fortawesome/free-regular-svg-icons"
 import { useState } from "react"
 function ProductCart({img,title,Description,price,rating,fav,car,contr,id,cat,brand}) {
@@ -23,7 +23,7 @@ function ProductCart({img,title,Description,price,rating,fav,car,contr,id,cat,br
     <Col className="d-flex justify-content-evenly align-items-evenly mb-3 " sm='12' lg='3' xlg='2' md='6'>
     <Card  className="box-shadow text-center d-flex justify-content-center flex-column align-items-center "style={{minWidth:'200px',minHeight:'450px',padding:'10px'}} >
     
-    <Link to={`/allproducts/:${id}`} onClick={()=>{dispatch(getProduct(id));window.localStorage.setItem('ID',id);window.localStorage.setItem('cat',cat);window.localStorage.setItem('brand',brand)}}>
+    <Link to={`/allproducts/${id}`} onClick={()=>{dispatch(getProduct(id));window.localStorage.setItem('cat',cat);window.localStorage.setItem('brand',brand);window.scrollTo({top:0,left:0,behavior:'smooth'})}}>
       <Card.Img  src={img}  style={{maxWidth:'150px'}}/>
     </Link>
       <Card.Body>
@@ -49,12 +49,12 @@ function ProductCart({img,title,Description,price,rating,fav,car,contr,id,cat,br
       </CardFooter>
      {contr&& <Card.Footer className="w-100">
       <div className="d-flex w-100 justify-content-between">
-      <span style={{cursor:'pointer'}}>إزالة
-        <FontAwesomeIcon icon={faTrash}/>
+      <span style={{cursor:'pointer'}} onClick={()=>dispatch(deleteProduct(id))}>إزالة
+        <FontAwesomeIcon icon={faTrash} style={{color:'indianred',fontSize:'22px'}}/>
       </span>
       <span style={{cursor:'pointer'}}>
         تعديل
-    <FontAwesomeIcon icon={faEdit} />
+    <FontAwesomeIcon icon={faEdit} style={{color:'green', fontSize:'22px'}}/>
       </span>
     </div>
       </Card.Footer>}

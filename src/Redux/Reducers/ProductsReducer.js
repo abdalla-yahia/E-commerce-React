@@ -1,4 +1,4 @@
-import { CREATE_PRODUCT,GET_ALL_PRODUCTS, GET_ONE_PRODUCT } from "../Types/Types";
+import { CREATE_PRODUCT,GET_ALL_PRODUCTS, GET_ONE_PRODUCT,DELETE_ONE_PRODUCT } from "../Types/Types";
 
 const initialState = {
     products: [],
@@ -28,6 +28,11 @@ const ProductsReducer = (state=initialState, action) => {
           oneProduct:action.payload,
           loading: false,
         };
+        case DELETE_ONE_PRODUCT:
+            return {
+                ...state,
+                loading: false,
+            }
 
         default:
             return state;

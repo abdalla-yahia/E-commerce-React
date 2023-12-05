@@ -10,7 +10,7 @@ function Categories({title}) {
   const [ID,setID]= useState('')
   const dispatch = useDispatch()
   const categories = useSelector(state=>state.categories.categories)
-  console.log(categories)
+  
 const getID =(id)=>{
   setID(id)
 }

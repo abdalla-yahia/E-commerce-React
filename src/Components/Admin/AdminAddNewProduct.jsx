@@ -1,19 +1,31 @@
 import Multiselect from 'multiselect-react-dropdown';
-import TostifyLiprary from '../Utility/TostifyLiprary';
+import TostifyLiprary, { notify } from '../Utility/TostifyLiprary';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faPlus } from '@fortawesome/free-solid-svg-icons';
 import MultiImageInput from 'react-multiple-image-input';
 import { CompactPicker } from 'react-color';
 import CreateAnewProductHook from '../../Hook/Products/Create-Anew-Product-Hook';
+import { useState } from 'react';
 
 function AdminAddNewProduct() {
 const  [setID,setBrand,images, setImages,name,setName,
     description,setDesc,totalPrice,setTotalPrice,netPrice,setNetPrice,quantity,setQuantaty,colors,setColors
     ,showColors,setShowColors,
-    categories,brands,state,onSelect,onRemove,sendDataHNDELLER
+    categories,brands,state,onSelect,onRemove,sendDataHNDELLER,
 ] = CreateAnewProductHook()
-  
-
+  const [count,setCount] =useState(0)
+const PriceHandeller =(e)=>{
+    if(netPrice > totalPrice){
+        notify('error','لايمكن أن يكون السعر بعد الخصم أكبر من قبل الخصم')
+        setNetPrice('')
+        e.target.focus()
+    }
+}
+const TextCountHandeller=(e)=>{
+    if(e.target.value.length < 50){
+        notify('warning','يجب أن لا يقل وصف المنتج عن 50 حرف على الأقل')
+    }
+}
 
     return (
     <div className='d-flex flex-column justify-content-start align-items-start gap-3'>
@@ -26,7 +38,7 @@ const  [setID,setBrand,images, setImages,name,setName,
             setImages={setImages}
             
             allowCrop={false}
-            max={7}
+            max={5}
             theme={{
                 background: '#ffffff',
                 outlineColor: '#ddd',
@@ -38,10 +50,13 @@ const  [setID,setBrand,images, setImages,name,setName,
             </div>
             
             <input value={name} type="text" onChange={(e)=>setName(e.target.value)} id="" placeholder='اسم المنتج' className='w-75 rounded-3 border border-2 outline px-3 py-2'/>
-            <textarea value={description} onChange={(e)=>setDesc(e.target.value)} style={{resize:'none'}} name="" id="" cols="30" rows="4" placeholder='وصف المنتج ...' className='w-75 rounded-3 border border-2 outline px-3 py-2'></textarea>
-            <input value={totalPrice} onChange={(e)=>setTotalPrice(e.target.value)} type="text" name="" id="" placeholder='السعر قبل الخصم ' className='w-75 rounded-3 border border-2 outline px-3 py-2'/>
-            <input value={netPrice} onChange={(e)=>setNetPrice(e.target.value)} type="text" name="" id="" placeholder='سعر المنتج   ' className='w-75 rounded-3 border border-2 outline px-3 py-2'/>
-            <input value={quantity} onChange={(e)=>setQuantaty(e.target.value)} type="text" name="" id="" placeholder='الكمية المتاحة   ' className='w-75 rounded-3 border border-2 outline px-3 py-2'/>
+            <div className='w-75 rounded-3 border border-2 outline ' style={{position:'relative'}}>
+            <textarea contenteditable="true" value={description} onChange={(e)=>{setDesc(e.target.value);setCount(e.target.value.length)}} onBlur={(e)=>TextCountHandeller(e)} style={{resize:'none'}} name="" id="" cols="30" rows="4" placeholder='وصف المنتج ...' className='w-100 rounded-3 border border-2 outline px-3 py-2'></textarea>
+            {count<50 &&<p style={{position:'absolute',bottom:'5px',left:'5px',fontSize:'15px',color:'rgba(0,0,0,.5)',zIndex:'9999'}}>{count}/50</p>}
+            </div>
+            <input value={totalPrice} onChange={(e)=>setTotalPrice(e.target.value)} type="number" min={0} name="" id="" placeholder='السعر قبل الخصم ' className='w-75 rounded-3 border border-2 outline px-3 py-2'/>
+            <input value={netPrice} onChange={(e)=>setNetPrice(e.target.value)} onBlur={(e)=>PriceHandeller(e)} type="number" min={0} name="" id="" placeholder='سعر المنتج   ' className='w-75 rounded-3 border border-2 outline px-3 py-2'/>
+            <input value={quantity} onChange={(e)=>setQuantaty(e.target.value)} type="number" min={0} name="" id="" placeholder='الكمية المتاحة   ' className='w-75 rounded-3 border border-2 outline px-3 py-2'/>
             <select  onChange={(e)=>setID(e.target.value)}  id=""  className='w-75 rounded-3 border border-2 outline px-3 py-2' >
             <option disabled selected value={'اختر التصنيف ...'}>اختر التصنيف ...</option>
             {categories.data&& categories.data.map(e=><option value={e._id}  > {e.name}</option>)}

@@ -1,13 +1,13 @@
 
-import { CREATE_PRODUCT, GET_ALL_PRODUCTS, GET_ONE_PRODUCT } from "../Types/Types";
-import getAllHook, { CreateHook } from "../../Hooks/Custom-Hooks";
+import { CREATE_PRODUCT, DELETE_ONE_PRODUCT, GET_ALL_PRODUCTS, GET_ONE_PRODUCT } from "../Types/Types";
+import getAllHook, { CreateHook,DeleteteHook } from "../../Hooks/Custom-Hooks";
 
 //Get All Products
 
-export const getAllProducts = () => async (dispatch) => {
+export const getAllProducts = (sort='') => async (dispatch) => {
     try {
-        const res = await getAllHook(`/api/v1/products`);
-        console.log(res.status)
+        const res = await getAllHook(`/api/v1/products?sort=${sort}`);
+        // console.log(res.status)
         dispatch({
             type: GET_ALL_PRODUCTS,
             payload: res.data,
@@ -21,7 +21,7 @@ export const getAllProducts = () => async (dispatch) => {
 export const createProduct = (formdata) => async (dispatch) => {
     try {
         const res = await CreateHook(`/api/v1/products`, formdata);
-        console.log(res.status)
+        // console.log(res.status)
         dispatch({
             type: CREATE_PRODUCT,
             payload: res.data,
@@ -46,3 +46,16 @@ export const getProduct = (id) => async (dispatch) => {
     }
 };
 
+// Delete a product
+
+export const deleteProduct = (id) => async (dispatch) => {
+    try {
+        const res = await DeleteteHook(`/api/v1/products/${id}`)
+        dispatch({
+            type:DELETE_ONE_PRODUCT,
+            payload:res.data,
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}

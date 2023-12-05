@@ -6,10 +6,9 @@ import { useEffect } from 'react'
 import { getAllProducts, getProduct } from '../../Redux/Actions/ProductsActions'
 import { getOneCategory } from '../../Redux/Actions/CategoryActions'
 import { getOneBrand } from '../../Redux/Actions/BrandsActions'
-
+import { useParams } from 'react-router-dom'
 function ProductPageDetails() {
-
-  const id = window.localStorage.getItem('ID')
+const {id}= useParams()
   const cat = window.localStorage.getItem('cat')
   const brand = window.localStorage.getItem('brand')
 
