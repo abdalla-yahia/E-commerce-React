@@ -11,14 +11,16 @@ function AdminAddNewProduct() {
 const  [setID,setBrand,images, setImages,name,setName,
     description,setDesc,totalPrice,setTotalPrice,netPrice,setNetPrice,quantity,setQuantaty,colors,setColors
     ,showColors,setShowColors,
-    categories,brands,state,onSelect,onRemove,sendDataHNDELLER,
+    categories,brands,state,onSelect,onRemove,sendDataHNDELLER,ID,brand,
 ] = CreateAnewProductHook()
   const [count,setCount] =useState(0)
 const PriceHandeller =(e)=>{
-    if(netPrice > totalPrice){
+    if(+netPrice > +totalPrice && +totalPrice > 0){
         notify('error','لايمكن أن يكون السعر بعد الخصم أكبر من قبل الخصم')
         setNetPrice('')
         e.target.focus()
+    }else if (+totalPrice === '' || +totalPrice === 0){
+        setTotalPrice(netPrice)
     }
 }
 const TextCountHandeller=(e)=>{
@@ -57,8 +59,8 @@ const TextCountHandeller=(e)=>{
             <input value={totalPrice} onChange={(e)=>setTotalPrice(e.target.value)} type="number" min={0} name="" id="" placeholder='السعر قبل الخصم ' className='w-75 rounded-3 border border-2 outline px-3 py-2'/>
             <input value={netPrice} onChange={(e)=>setNetPrice(e.target.value)} onBlur={(e)=>PriceHandeller(e)} type="number" min={0} name="" id="" placeholder='سعر المنتج   ' className='w-75 rounded-3 border border-2 outline px-3 py-2'/>
             <input value={quantity} onChange={(e)=>setQuantaty(e.target.value)} type="number" min={0} name="" id="" placeholder='الكمية المتاحة   ' className='w-75 rounded-3 border border-2 outline px-3 py-2'/>
-            <select  onChange={(e)=>setID(e.target.value)}  id=""  className='w-75 rounded-3 border border-2 outline px-3 py-2' >
-            <option disabled selected value={'اختر التصنيف ...'}>اختر التصنيف ...</option>
+            <select value={ID} onChange={(e)=>setID(e.target.value)}  id=""  className='w-75 rounded-3 border border-2 outline px-3 py-2' >
+            <option  selected value={'none'}>اختر التصنيف ...</option>
             {categories.data&& categories.data.map(e=><option value={e._id}  > {e.name}</option>)}
             
         </select>
@@ -72,8 +74,8 @@ const TextCountHandeller=(e)=>{
                 placeholder='اختر التصنيف الفرعي....'
                 emptyRecordMsg='لا توجد تفريعات لهذا التصنيف'
                 />
-            <select  name="" id="" onChange={(e)=>setBrand(e.target.value)}  className='w-75 rounded-3 border border-2 outline px-3 py-2' >
-            <option disabled selected value={'اختر الماركة ...'}>اختر الماركة ...</option>
+            <select value={brand} name="" id="" onChange={(e)=>setBrand(e.target.value)}  className='w-75 rounded-3 border border-2 outline px-3 py-2' >
+            <option selected  value={'none'}>اختر الماركة ...</option>
             {brands.data && brands.data.map(e=><option value={e._id}> {e.name}</option>)}
             
         </select>

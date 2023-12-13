@@ -13,6 +13,7 @@ function RegesterPage() {
   const [phone,setPhone]=useState('')
   const [password,setPassword]=useState('')
   const [RePassword,setRePassword]=useState('')
+  const [done,setDone]=useState(false)
   const dispatch = useDispatch()
 const data = {
   name:name,
@@ -24,11 +25,17 @@ const data = {
   const sendDataSubmit = async()=>{
     if(name !=='' && email !=='' && phone !=='' && password !== '' && RePassword !== ''){
       if(password === RePassword){
-       await dispatch(authNewUser(data))
-        notify('success')
+      await dispatch(authNewUser(data))
+        notify('success','تم إنشاء حساب بنجاح')
         console.log(user)
+        setName('')
+        setEmail('')
+        setPhone('')
+        setPassword('')
+        setRePassword('')
+        setDone(true)
       }else{
-        notify('error')
+        notify('error',"توجد مشكلة فى عملية انشاء الحساب")
       }
     }else
     {
@@ -45,8 +52,9 @@ const data = {
         <Form.Control value={phone} onChange={(e)=>setPhone(e.target.value)} className="w-25 bg-light text-center mb-3 p-2 border-2" type="phone" placeholder="رقم الهاتف" />
         <Form.Control value={password} onChange={(e)=>setPassword(e.target.value)} className="w-25 bg-light text-center mb-3 p-2 border-2" type="password" placeholder="كلمة السر ..." />
         <Form.Control value={RePassword} onChange={(e)=>setRePassword(e.target.value)} className="w-25 bg-light text-center mb-3 p-2 border-2" type="password" placeholder="  إعادة كلمة السر ...." />
+      
       <Button onClick={()=>sendDataSubmit()} className="w-25 mb-5" variant="dark" type="submit">
-        دخول
+      <Link to={'/login'} className='w-100 text-decoration-none'> دخول</Link>
       </Button>
       <Form.Label className="mb-3">
          لديك حساب بالفعل؟

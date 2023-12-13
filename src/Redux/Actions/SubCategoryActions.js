@@ -1,5 +1,6 @@
+import { clear } from "@testing-library/user-event/dist/clear";
 import getAllHook,{ CreateHook }  from "../../Hooks/Custom-Hooks";
-import { CREATE_SUB_CATEGORY, GET_ALL_SUB_CATEGORY } from "../Types/Types";
+import { CREATE_SUB_CATEGORY, GET_ALL_SUB_CATEGORY, GET_ONE_SUB_CATEGORY } from "../Types/Types";
 
 //Get All Sub Categories
 
@@ -34,4 +35,20 @@ export const createSubCategory = (id,name) => async (dispatchEvent) => {
        console.log(error);
 }
 };
+
+// Get a specific Sub Category
+
+export const getSubCategory = (id,name) => async (dispatch) => {
+
+    try {
+        const res = await getAllHook(`/api/v1/subcategories/${id}`)
+        dispatch({
+            type: GET_ONE_SUB_CATEGORY,
+            payload: res.data,
+        })
+    } catch (error) {
+        console.log(error);
+    }
+
+}
 

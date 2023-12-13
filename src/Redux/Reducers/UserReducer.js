@@ -1,10 +1,11 @@
-import { AUTH_NEW_USER, GET_ALL_USERS } from "../Types/Types"
+import { AUTH_NEW_USER, GET_ALL_USERS, LOG_USER } from "../Types/Types"
 
 
 const initialState =
 {
     authusers: [],
     loading: true,
+    LoginUser:[]
 }
 
 const authReducer = (state=initialState, action)=>{
@@ -17,9 +18,15 @@ const authReducer = (state=initialState, action)=>{
             }
         case AUTH_NEW_USER:
             return {
-              ...state,
+            ...state,
                 loading: false
             }
+            case LOG_USER:
+                return {
+                    ...state,
+                    LoginUser:action.payload,
+                    loading: false
+                }
         default:
             return state
     }

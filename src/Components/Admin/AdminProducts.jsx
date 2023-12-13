@@ -11,13 +11,13 @@ function AdminProducts() {
 useEffect(()=>{
   setLength(products.data && products.data.length)
 dispatch(getAllProducts())
-},[dispatch,length])
+},[dispatch,length,products])
 
 
   return (
     <Container>
         <Row>
-            {products.data&& products.data.map(e=><ProductCart brand={e.brand} cat={e.category} id={e._id} contr={true} img={e.imageCover} title={e.title}Description={e.description}price={`${e.price} جنية`} rating={4.5}/>)}
+            {products.data&& products.data.map(e=><ProductCart  brand={e.brand} cat={e.category} id={e._id} contr={true} img={e.imageCover} title={e.title}Description={e.description}price={`${e.price} جنية`} rating={e.ratingsQuantity}/>)}
         </Row>
     </Container>
   )

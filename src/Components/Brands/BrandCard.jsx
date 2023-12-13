@@ -25,7 +25,7 @@ function BrandCard({img,title,control,id,getId}) {
               <FontAwesomeIcon icon={faTrash} style={{cursor:'pointer'}}/>
               </span>
               <span onClick={()=>{GetBrandHandeller(id)}}>
-              <Link  to={`/adminhomepage/brands/:${id}`} >
+              <Link  to={`/adminhomepage/brands/${id}`} >
               <FontAwesomeIcon icon={faEdit} style={{cursor:'pointer'}}/>
               </Link>
               </span>

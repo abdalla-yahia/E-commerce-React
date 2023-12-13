@@ -20,7 +20,6 @@ export  const getOneCategory =  (id) => async (dispatch) => {
         type: GET_ONE_CATEGORY,
         payload:await response.data
     })
-
 }
 // Get Category By Page Name
 export const getCategoriesByPg = (page,limit) => async (dispatch) => { 

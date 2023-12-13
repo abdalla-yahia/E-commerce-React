@@ -3,7 +3,7 @@ import * as Comp from '../../Components'
 import { Container, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getAllProducts, getProduct } from '../../Redux/Actions/ProductsActions'
+import {  getProduct,getProductsOfCategory,getProductsOfBrand } from '../../Redux/Actions/ProductsActions'
 import { getOneCategory } from '../../Redux/Actions/CategoryActions'
 import { getOneBrand } from '../../Redux/Actions/BrandsActions'
 import { useParams } from 'react-router-dom'
@@ -12,10 +12,13 @@ const {id}= useParams()
   const cat = window.localStorage.getItem('cat')
   const brand = window.localStorage.getItem('brand')
 
-  const Allproducts = useSelector(state=>state.products.products)
+  // const Allproducts = useSelector(state=>state.products.products)
   const products = useSelector(state=>state.products.oneProduct)
   const oneCategory  = useSelector(state=>state.categories.oneCategory)
   const oneBrand  = useSelector(state=>state.brands.onebrand)
+  const productsOfCat = useSelector(state=>state.products.productsCategory)
+  const productsOfBrand = useSelector(state=>state.products.productsBrands)
+  // const productsOfSubCat = useSelector(state=>state.products.productsSubCategory)
 
   const dispatch = useDispatch()
   
@@ -25,13 +28,15 @@ const {id}= useParams()
         dispatch(getProduct(id))
         dispatch(getOneCategory(cat))
         dispatch(getOneBrand(brand))
+        dispatch(getProductsOfCategory(cat))
+        dispatch(getProductsOfBrand(brand))
       },100) 
       
     },[id,dispatch,cat,brand])
 
-    useEffect(()=>{
-      dispatch(getAllProducts())
-},[])
+
+
+
   return (
     <div style={{minHeight:'670px'}}>
     <Comp.SubNav />
@@ -53,11 +58,11 @@ const {id}= useParams()
       <Row>
         <Comp.Title title={'منتجات قد تعجبك'}/>
         {
-          Allproducts.data && Allproducts.data.map(e=>
-
+          productsOfCat.data && productsOfCat.data.map(e=>
             <Comp.ProductCart cat={e.category} brand={e.brand} fav={true} car={true} img={e.imageCover} title={e.title} Description={e.description} price={e.price} rating={4.5} id={e._id}/>
           )
         }
+        
         
       </Row>
     </Container>

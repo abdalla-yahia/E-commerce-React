@@ -1,0 +1,171 @@
+ [
+    {
+        "_id": "65707cc71f33825defbb5a99",
+        "title": "جاكت شتوي",
+        "slug": "jakt-shtwy",
+        "description": "جاكت شتوي ذو كفاءة عالية فى التدفئة ومصنوع من اجود انواع الصوف ومبطن باجود القطن ",
+        "quantity": 50,
+        "sold": 0,
+        "price": 350,
+        "availableColors": [
+            "#7b64ff",
+            "#0062b1",
+            "#fda1ff",
+            "#e27300"
+        ],
+        "imageCover": "http://127.0.0.1:3000/products/products-27aa8966-93f1-431e-a0cb-c74e93ec7128-1701870790677-cover.jpeg",
+        "images": [
+            "http://127.0.0.1:3000/products/products-75acd4dc-4ee2-49df-b3f5-82dc5607ebda-1701870790759-2.jpeg",
+            "http://127.0.0.1:3000/products/products-29e6a7bc-eb0d-4559-a8f3-befc2c7314b6-1701870790759-1.jpeg",
+            "http://127.0.0.1:3000/products/products-77a02e91-c54f-42c7-a107-590f9f881bda-1701870790760-3.jpeg",
+            "http://127.0.0.1:3000/products/products-c2514986-0b20-4813-8f65-9dae68535f9e-1701870790760-4.jpeg"
+        ],
+        "category": "6567a174cb3d4014a4228b19",
+        "subcategory": [
+            "656964130a72f8d160ef2af1"
+        ],
+        "brand": "6567a1e3cb3d4014a4228b3b",
+        "ratingsQuantity": 0,
+        "createdAt": "2023-12-06T13:53:11.310Z",
+        "updatedAt": "2023-12-06T13:53:11.310Z"
+    },
+    {
+        "_id": "65707c691f33825defbb5a82",
+        "title": "جاكت روزانا",
+        "slug": "jakt-rwzana",
+        "description": "جاكت روزانا ذو كفاءة عالية ومودة حديثة ومصنوع من اجود الخامات",
+        "quantity": 30,
+        "sold": 0,
+        "price": 220,
+        "availableColors": [
+            "#68bc00",
+            "#e27300",
+            "#73d8ff"
+        ],
+        "imageCover": "http://127.0.0.1:3000/products/products-f707d4c7-9080-4671-9cb6-a7447368b71b-1701870697226-cover.jpeg",
+        "images": [
+            "http://127.0.0.1:3000/products/products-0887c212-a32e-4948-a4e6-f78e721a6574-1701870697311-1.jpeg",
+            "http://127.0.0.1:3000/products/products-38d8d604-1211-475e-9b71-56f58a84efc0-1701870697312-2.jpeg",
+            "http://127.0.0.1:3000/products/products-ae051b3c-cb14-4ce6-b3a1-cc010c025d80-1701870697312-4.jpeg",
+            "http://127.0.0.1:3000/products/products-4623583b-4ece-4d2e-9e04-955591843854-1701870697312-3.jpeg"
+        ],
+        "category": "6567a174cb3d4014a4228b19",
+        "subcategory": [
+            "656964130a72f8d160ef2af1"
+        ],
+        "brand": "6567a1dbcb3d4014a4228b39",
+        "ratingsQuantity": 0,
+        "createdAt": "2023-12-06T13:51:37.852Z",
+        "updatedAt": "2023-12-06T13:51:37.852Z"
+    },
+    {
+        "_id": "65707bd81f33825defbb5a6b",
+        "title": "حقيبة سفر شانيل",
+        "slug": "hqybh-sfr-shanyl",
+        "description": "حقيبة سفر شانيل ذو خامة عالية ومتانة كبيرة ولها العديد من الاستخدامات",
+        "quantity": 25,
+        "sold": 0,
+        "price": 390,
+        "availableColors": [
+            "#dbdf00",
+            "#fb9e00",
+            "#cccccc"
+        ],
+        "imageCover": "http://127.0.0.1:3000/products/products-dba0e79b-72d7-4009-a45d-3e0278836cc4-1701870551983-cover.jpeg",
+        "images": [
+            "http://127.0.0.1:3000/products/products-317347c9-16c6-451a-b19e-e51ff45ea47a-1701870552013-1.jpeg",
+            "http://127.0.0.1:3000/products/products-4347cb4d-3dc8-47ed-8d20-e599fcd0869b-1701870552014-3.jpeg",
+            "http://127.0.0.1:3000/products/products-d2ffa309-66b1-4e18-aa32-24da6790f16a-1701870552013-2.jpeg"
+        ],
+        "category": "65707aec1f33825defbb5a45",
+        "subcategory": [],
+        "brand": "6567a1e3cb3d4014a4228b3b",
+        "ratingsQuantity": 0,
+        "createdAt": "2023-12-06T13:49:12.192Z",
+        "updatedAt": "2023-12-06T13:49:12.192Z"
+    },
+    {
+        "_id": "65707b661f33825defbb5a56",
+        "title": "حقيبىة سفر كبيرة",
+        "slug": "hqybah-sfr-kbyrh",
+        "description": "حقيبة سفر كبيرة تساعدك فى رحلات السفارى او الانشطة الخارجية ",
+        "quantity": 40,
+        "sold": 0,
+        "price": 340,
+        "availableColors": [
+            "#194d33",
+            "#c45100",
+            "#666666"
+        ],
+        "imageCover": "http://127.0.0.1:3000/products/products-18c2c239-df04-4d20-8d4f-5421dd9f1cd6-1701870438503-cover.jpeg",
+        "images": [
+            "http://127.0.0.1:3000/products/products-9e6b275b-3bca-4375-a567-034ece88247a-1701870438532-1.jpeg",
+            "http://127.0.0.1:3000/products/products-8cbcc296-4321-4b0b-a70f-f89779c06f46-1701870438532-3.jpeg",
+            "http://127.0.0.1:3000/products/products-999c2d36-ffe6-48d3-be60-f2c4f33dda25-1701870438532-2.jpeg"
+        ],
+        "category": "65707aec1f33825defbb5a45",
+        "subcategory": [],
+        "brand": "6567a1facb3d4014a4228b41",
+        "ratingsQuantity": 0,
+        "createdAt": "2023-12-06T13:47:18.718Z",
+        "updatedAt": "2023-12-06T13:47:18.718Z"
+    },
+    {
+        "_id": "656fafe981098ad96ce52eea",
+        "title": "دراجة NISAN",
+        "slug": "drajh-nisan",
+        "description": "دراجة هوائية من انتاج شركة نيسان للدراجات الهوائية والسيارات , تعمل هذه الدراجة على تنشيط الدورة الدموية أثناء الاستخدام وتحافظ على اللياقة البدنية لما تتمتع به من تكنوولوجيا عالية لقياس السرعة وظغط الدم",
+        "quantity": 35,
+        "sold": 0,
+        "price": 3200,
+        "availableColors": [
+            "#ab149e",
+            "#009ce0",
+            "#fcdc00",
+            "#b3b3b3"
+        ],
+        "imageCover": "http://127.0.0.1:3000/products/products-9d6224ab-0519-43f5-8109-ec6422ee6934-1701818344879-cover.jpeg",
+        "images": [
+            "http://127.0.0.1:3000/products/products-0c76e6b1-1b92-45e5-a6de-7880dbecdd3b-1701818344989-1.jpeg",
+            "http://127.0.0.1:3000/products/products-b033fc37-62c3-482e-90ee-59c91c044a55-1701818344990-5.png",
+            "http://127.0.0.1:3000/products/products-8f47b0c4-bbd3-4973-8268-0e4971fcc058-1701818344990-3.jpeg",
+            "http://127.0.0.1:3000/products/products-603b8d7c-6b94-4c23-a6b6-917360288757-1701818344989-2.jpeg",
+            "http://127.0.0.1:3000/products/products-2bb663cc-a54c-47f2-9dd8-868d1d01a390-1701818344990-4.jpeg"
+        ],
+        "category": "656fac1881098ad96ce52e5e",
+        "subcategory": [],
+        "brand": "656faf3681098ad96ce52ed9",
+        "ratingsQuantity": 0,
+        "createdAt": "2023-12-05T23:19:05.268Z",
+        "updatedAt": "2023-12-05T23:19:05.268Z"
+    },
+    {
+        "_id": "656fae1381098ad96ce52eb1",
+        "title": "دراجة هوائية",
+        "slug": "drajh-hwaeyh",
+        "description": "دراجة هوائية من انتاج شركة BMW  تحتوي على 5 سرعات يمكن التنقل بينهم بكل سهولة ويسر , مصنوعة من أجود الخامات العالمية ",
+        "quantity": 40,
+        "sold": 0,
+        "price": 2400,
+        "availableColors": [
+            "#fa28ff",
+            "#000000",
+            "#68ccca",
+            "#9f0500"
+        ],
+        "imageCover": "http://127.0.0.1:3000/products/products-6512ab5b-bdf0-40c0-870b-1e6d5a8011bd-1701817874734-cover.jpeg",
+        "images": [
+            "http://127.0.0.1:3000/products/products-7f60d0a6-3c5d-4ea7-a431-28826c794652-1701817874844-2.jpeg",
+            "http://127.0.0.1:3000/products/products-1df4edb7-8972-40b7-86ff-de974675f9c7-1701817874844-3.jpeg",
+            "http://127.0.0.1:3000/products/products-c769d9fa-5845-49f8-a1e5-11dec45e16d8-1701817874845-4.jpeg",
+            "http://127.0.0.1:3000/products/products-f5af6bf9-9777-4e47-a900-a3073f4b52f7-1701817874844-1.jpeg",
+            "http://127.0.0.1:3000/products/products-9b4af897-a55e-492f-9206-bc9a311adcd8-1701817874845-5.jpeg"
+        ],
+        "category": "656fac1881098ad96ce52e5e",
+        "subcategory": [],
+        "brand": "656facdc81098ad96ce52e64",
+        "ratingsQuantity": 0,
+        "createdAt": "2023-12-05T23:11:15.219Z",
+        "updatedAt": "2023-12-05T23:11:15.219Z"
+    }
+]

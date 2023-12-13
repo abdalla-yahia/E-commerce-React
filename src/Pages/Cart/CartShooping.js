@@ -2,8 +2,26 @@ import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { Title,CartItem } from '../../Components'
 import { Link } from 'react-router-dom'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import {  getAllProductsinCart } from '../../Redux/Actions/ProductsActions'
 function CartShooping() {
+
+
+  const cartP = useSelector(state=>state.products.cartProducts)
+
+  const dispatch = useDispatch()
+let token = localStorage.getItem('token');
+
+  useEffect(()=>{
+
+    dispatch(getAllProductsinCart(token))
+
+  },[dispatch])
+
+console.log(cartP && cartP.data)
+
+
   return (
     <Container>
       <Title  title={'عربة التسوق'}/>

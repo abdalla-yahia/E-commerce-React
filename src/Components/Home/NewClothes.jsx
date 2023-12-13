@@ -13,9 +13,9 @@ function NewClothes() {
         
             <Row>
             {
-            products.data && products.data.slice(0,5).map((e,i)=>
+            products.data && products.data.slice(0,8).map((e,i)=>
               
-                <ProductCart key={i} img={e.imageCover} title={e.title} Description={e.description} price={e.price} rating={e.rating} fav={true} car={true} id={e._id} cat={e.category} brand={e.brand}/>
+                <ProductCart key={i} img={e.imageCover} title={e.title} Description={e.description} price={e.price} rating={e.ratingsQuantity} fav={true} car={true} id={e._id} cat={e.category} brand={e.brand}/>
               
             )
           }

@@ -1,15 +1,24 @@
 import getAllSubCategory from "../../Redux/Actions/SubCategoryActions";
 import getAllCategories from "../../Redux/Actions/CategoryActions";
+import getAllBrandsHook from "../../Redux/Actions/BrandsActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { createProduct } from "../../Redux/Actions/ProductsActions";
-import getAllBrandsHook from "../../Redux/Actions/BrandsActions";
+import { getProduct, updateProduct } from "../../Redux/Actions/ProductsActions";
 import { notify } from "../../Components";
+import { useParams } from "react-router-dom";
 
 
-function CreateAnewProductHook() {
+function UpdateAspecificProductHook() {
+  const {id} =useParams()
+  const product = useSelector(state => state.products.oneProduct)
+  
   const dispatch = useDispatch();
-
+  
+  useEffect(()=>{
+    dispatch(getProduct(id))
+  },[dispatch,id]);
+  
+  
   const [ID, setID] = useState('');
   const [brand, setBrand] = useState('');
   const [subcategory, setSubCategor] = useState([]);
@@ -21,7 +30,25 @@ function CreateAnewProductHook() {
   const [quantity, setQuantaty] = useState('');
   const [colors, setColors] = useState([]);
   const [showColors, setShowColors] = useState(false);
-
+  
+  useEffect(()=>{
+      if(product){
+    let pr=product.data
+  if(pr){
+      setName(pr.title);
+      setID(pr.category);
+      // setSubCategor(pr.subcategory);
+      setBrand(pr.brand);
+      setImages(pr.images);
+      setDesc(pr.description);
+      setTotalPrice(pr.totalPrice);
+      setNetPrice(pr.price);
+      setQuantaty(pr.quantity);
+      setColors(pr.availableColors);
+      setShowColors("");
+      
+    }}
+  },[id,product,dispatch])
   //Convert An Object Of Multy Images Selected To An Array
   let newImages = [];
   if (images) {
@@ -39,11 +66,21 @@ function CreateAnewProductHook() {
   const state = {
     options: [],
   };
-
   if (subCat.data) {
     state.options = subCat.data.map((e) => ({ name: e.name, id: e._id }));
   }
 
+  //Functions to Convert Url to base 64
+    const getBase64Image = async (url) => {
+      
+        const response = await fetch(url,{mode:'cors'});
+        const blob = await response.blob();
+        const ext = url.split('.').pop();
+        const filename = url.split('/').pop();
+        const metadata = {type: `image/${ext}`}
+        // Create a File object from the Blob
+        return new File([blob], Math.random(), metadata);
+    };
   // Function To Convert base 64 Images To Files
   function dataURLtoFile(dataurl, filename) {
     var arr = dataurl.split(","),
@@ -59,17 +96,21 @@ function CreateAnewProductHook() {
 
   // When Select sub category is selected
   const onSelect = (selectedList, selectedItem) => {
-    setSubCategor([...selectedList, selectedItem.id]);
+    setSubCategor([...subcategory, selectedItem.id]);
+    
   };
 
   // When Remove sub category is selected
   const onRemove = (selectedList, removedItem) => {
-    setSubCategor([...selectedList.filter((item) => item !== removedItem.id)]);
+    setSubCategor([...subcategory.filter((item) => item !== removedItem.id)]);
   };
 
-  // Send Data Of Produc to the server
-  const sendDataHNDELLER = async () => {
+//#######  Send Data Of Product to the server #############################
+//########################################################################
+  const updateHandellerSubmit = async () => {
     console.log('first')
+    let ImgCover=''
+    console.log(images[0].length)
     if (
       Object.keys(images).length !== 0&&
       name !== "" &&
@@ -80,9 +121,26 @@ function CreateAnewProductHook() {
       ID !== 'none' &&
       brand !== "" && 
       brand !== 'none'
-    ) {
-      const ImgCover = dataURLtoFile(newImages[0], Math.random() + ".png");
-      const formdata = new FormData();
+      ) {
+        
+        const formdata = new FormData();
+
+
+        if(images[0].length >= 1000){
+
+          ImgCover = dataURLtoFile(newImages[0], Math.random() + ".png");
+          console.log('One',ImgCover)
+          newImages.map((e) =>
+          formdata.append("images", dataURLtoFile(e, Math.random() + ".png"))
+          );
+        }else{
+          ImgCover =await getBase64Image(images[0]).then(res=>res);
+          console.log('Two',ImgCover)
+
+          for(let i in images){
+            formdata.append("images",await getBase64Image(images[i]).then(res=>res))
+          }
+        }
       await formdata.append("imageCover", ImgCover);
       await formdata.append("title", name);
       await formdata.append("category", ID);
@@ -91,15 +149,13 @@ function CreateAnewProductHook() {
       await formdata.append("discount", totalPrice);
       await formdata.append("description", description);
       await formdata.append("quantity", quantity);
-
-      newImages.map((e) =>
-        formdata.append("images", dataURLtoFile(e, Math.random() + ".png"))
-      );
+      
       colors.map((e) => formdata.append("availableColors", e));
       subcategory.map((e) => formdata.append("subcategory", e));
-      dispatch(createProduct(formdata));
+
+      dispatch(updateProduct(id,formdata));
       
-      notify("success",'تمت إضافة المنتج بنجاح 👍');
+      notify("success",'تم تعديل المنتج بنجاح 👍');
 
       setID("");
       setSubCategor([]);
@@ -127,7 +183,10 @@ function CreateAnewProductHook() {
     }
   };
 
+    
+    
 
+ // Calling the dispatcher
   useEffect(() => {
     if (ID) {
       dispatch(getAllSubCategory(ID));
@@ -161,12 +220,12 @@ function CreateAnewProductHook() {
     state,
     onSelect,
     onRemove,
-    sendDataHNDELLER,
+    updateHandellerSubmit,
     ID,
     brand,
-    // updateHandellerSubmit
+    
   ];
 }
 
-export default CreateAnewProductHook;
+export default UpdateAspecificProductHook;
 
