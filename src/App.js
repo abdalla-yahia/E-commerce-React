@@ -15,10 +15,7 @@ useEffect(()=>{
 // console.log(data)
   return (
     <>
-    
     <RouterProvider router={router}/>
-    
-
     <Footer />
     </>
   )

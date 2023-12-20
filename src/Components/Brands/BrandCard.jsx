@@ -1,22 +1,24 @@
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Card, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {TostifyLiprary} from '../.'
 import DeleteEditBrandsHooks from '../../Hook/Brands/Delete&EditBrands-Hooks'
 import { useEffect } from 'react';
 
 function BrandCard({img,title,control,id,getId}) {
-
+const navigate = useNavigate()
   const [ID,setID, GetBrandHandeller, DeleteHandeller] = DeleteEditBrandsHooks(id,getId)
  
   useEffect(()=>{
     getId(ID)
   },[ID])
-
+const ProductsHandeller =()=>{
+  navigate(`/brand/${id}/products`)
+}
   return (
     <>
-    <Col xm='12' sm='6' md='4' lg='2' className='mb-3 d-flex justify-content-center' >
+    <Col style={{cursor:'pointer'}} xm='12' sm='6' md='4' lg='2' className='mb-3 d-flex justify-content-center' onClick={()=>ProductsHandeller()} >
             <Card  style={{ width: '8rem',height:'180px' }}>
                 <Card.Img src={img} style={{minHeight:'125px'}}/>
                 <Card.Footer className='text-center'>

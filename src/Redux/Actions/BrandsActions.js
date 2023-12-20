@@ -54,11 +54,16 @@ export const DeleteBrand = (id) => async (dispatch) => {
 //Update a brand
 
 export const UpdateBrand = (id,formData) => async (dispatch) => {
-    const brand = await UpdateHook(`/api/v1/brands/${id}/`,formData)
-    dispatch({
-        type: UPDATE_BRAND,
-        payload: brand.data
-    })
+    try {
+        
+        const brand = await UpdateHook(`/api/v1/brands/${id}`,formData)
+        dispatch({
+            type: UPDATE_BRAND,
+            payload: brand.data
+        })
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 

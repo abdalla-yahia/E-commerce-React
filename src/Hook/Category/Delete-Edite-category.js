@@ -4,7 +4,9 @@ import { useState } from 'react'
 import {notify} from '../../Components'
 
 function DeleteEditecategory() {
-    const dispatch = useDispatch()
+
+
+const dispatch = useDispatch()
 const [ID,setID] = useState('')
 
 const DeleteHandeller =(id)=>{

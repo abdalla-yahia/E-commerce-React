@@ -7,7 +7,7 @@ function GetAllproductsHook() {
     const dispatch= useDispatch()
   
     useEffect(()=>{
-      dispatch(getAllProducts())
+      dispatch(getAllProducts('','جاكت'))
     },[dispatch])
   
   return (

@@ -1,7 +1,8 @@
-import { CREATE_PRODUCT,GET_ALL_PRODUCTS,GET_PRODUCTS_OF_BRAND,GET_PRODUCTS_OF_CATEGORY, GET_ALL_CART_PRODUCTS,DELETE_CART_PRODUCT,GET_ONE_PRODUCT,DELETE_ONE_PRODUCT, CART_PRODUCTS, GET_PRODUCTS_OF_SUB_CATEGORY, UPDATE_A_PRODUCT } from "../Types/Types";
+import { CREATE_PRODUCT,GET_ALL_PRODUCTS_IN_SEARCH,GET_ALL_PRODUCTS,GET_PRODUCTS_OF_BRAND,GET_PRODUCTS_OF_CATEGORY, GET_ALL_CART_PRODUCTS,DELETE_CART_PRODUCT,GET_ONE_PRODUCT,DELETE_ONE_PRODUCT, CART_PRODUCTS, GET_PRODUCTS_OF_SUB_CATEGORY, UPDATE_A_PRODUCT } from "../Types/Types";
 
 const initialState = {
     products: [],
+    productsInSearch:[],
     productsCategory:[],
     productsBrands:[],
     productsSubCategory:[],
@@ -21,6 +22,12 @@ const ProductsReducer = (state=initialState, action) => {
                 products: action.payload,
                 loading: false,
             };
+            case GET_ALL_PRODUCTS_IN_SEARCH:
+                return {
+                    ...state,
+                    productsInSearch: action.payload,
+                    loading:false,
+                }
         case CREATE_PRODUCT:
             return {
         ...state,

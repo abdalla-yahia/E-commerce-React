@@ -15,6 +15,7 @@ export {default as MostSold} from './Products/MostSold';
 export {default as ProductsImgSlider} from './Products/ProductsImgSlider';
 export {default as ProductDitails} from './Products/ProductDitails';
 export {default as ProductComments} from './Products/ProductComments';
+export {default as ProductsSerchResult} from './Products/ProductsSerchResult';
 export {default as Discount} from './Home/Discount';
 export {default as NewClothes} from './Home/NewClothes';
 export {default as ProductCart} from './Products/ProductCart'

@@ -1,16 +1,29 @@
 
-import { CREATE_PRODUCT,GET_PRODUCTS_OF_CATEGORY,GET_PRODUCTS_OF_BRAND,GET_PRODUCTS_OF_SUB_CATEGORY, DELETE_ONE_PRODUCT,GET_ALL_CART_PRODUCTS,CART_PRODUCTS,DELETE_CART_PRODUCT, GET_ALL_PRODUCTS, GET_ONE_PRODUCT, UPDATE_A_PRODUCT } from "../Types/Types";
+import { CREATE_PRODUCT,GET_PRODUCTS_OF_CATEGORY,GET_PRODUCTS_OF_BRAND,GET_PRODUCTS_OF_SUB_CATEGORY, DELETE_ONE_PRODUCT,GET_ALL_CART_PRODUCTS,CART_PRODUCTS,DELETE_CART_PRODUCT, GET_ALL_PRODUCTS, GET_ONE_PRODUCT, UPDATE_A_PRODUCT, GET_ALL_PRODUCTS_IN_SEARCH } from "../Types/Types";
 import getAllHook, { CreateHook,DeleteteHook,UpdateHook } from "../../Hooks/Custom-Hooks";
 
 //Get All Products
 
-export const getAllProducts = (sort='') => async (dispatch) => {
+export const getAllProducts = (sort='',key='') => async (dispatch) => {
     try {
-        const res = await getAllHook(`/api/v1/products?sort=${sort}`);
+        const res = await getAllHook(`/api/v1/products?sort=${sort}&keyword=${key}`);
         // console.log(res.status)
         dispatch({
             type: GET_ALL_PRODUCTS,
             payload: res.data,
+        });
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+//Get All Products In Search with a spesific Word
+
+export const getAllProductsInSearch = (word) => async (dispatch) => {
+    try {
+        dispatch({
+            type: GET_ALL_PRODUCTS_IN_SEARCH,
+            payload: word,
         });
     } catch (error) {
         console.log(error);
@@ -144,7 +157,8 @@ export const deleteProductfromCart = (id,token) => async (dispatch) => {
 export const getProductsOfCategory = (id) => async (dispatch) => {
 
     try {
-        const res = await getAllHook(`/api/v1/products/?category=${id}`)
+        let api = id !== '' ? `/api/v1/products/?category=${id}` :'/api/v1/products/'
+        const res = await getAllHook(`${api}`)
         dispatch({
             type:GET_PRODUCTS_OF_CATEGORY,
             payload:res.data,

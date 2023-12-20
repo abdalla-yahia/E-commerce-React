@@ -2,14 +2,15 @@
 import React,{useEffect, useState} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { Loading, Title, TostifyLiprary,notify } from '../../Components'
-import {UpdateBrand, getOneBrand} from '../../Redux/Actions/BrandsActions'
 import { useSelector,useDispatch } from 'react-redux';
 import * as Pic from '../../Assets';
 import { Link, useParams } from 'react-router-dom';
+import { updateCategory,getOneCategory } from '../../Redux/Actions/CategoryActions';
 
-function AdminEditBrand() {
+function AdminEditCategory() {
   const {ID} = useParams()
-  const oneBrand = useSelector(state=> state.brands.onebrand.data)
+  const category = useSelector(state=>state.categories.oneCategory.data)
+
     const [name,setName] = useState('')
     const [image,setImage] = useState('')
     const [path,setPath] = useState('')
@@ -18,20 +19,23 @@ function AdminEditBrand() {
     const dispatch = useDispatch();
     
     useEffect(()=>{
-      dispatch(getOneBrand(ID))
+      dispatch(getOneCategory(ID))
     },[ID])
 
     useEffect(()=>{
-      if(!oneBrand){
-        setImage(Pic.avatar)
-        setName('ماركة')
-      }else {
-        setImage(oneBrand.image)
-        setName(oneBrand.name)
-        setID(ID)
-        
-      }
-    },[oneBrand,ID])
+        const run = async () =>{
+
+            if(!category){
+                setImage(Pic.avatar)
+                setName('تصنيف')
+            }else {
+              await  setImage(category.image)
+               await setName(category.name)
+               await setID(ID)
+            }
+        }
+        run()
+    },[category,ID])
 
     // When Change Image
     const uploadFileHandeller =(e)=>{
@@ -57,7 +61,7 @@ function AdminEditBrand() {
   
   notify('success')
       setLoading(false)
-        dispatch(UpdateBrand(id,data))
+        dispatch(updateCategory(id,data))
         setLoading(true)
         setName('')
         setPath('')
@@ -71,14 +75,14 @@ const chngeHandeller =(e)=>{
     <>
     <Container>
         <Row>
-        <Title title={'تعديل الماركة'}/>
+        <Title title={'تعديل التصنيف'}/>
         <Col className='d-flex gap-4 flex-column justify-content-center align-items-center'>
         <label htmlFor='uploadInp' style={{cursor:'pointer'}}>
         <img src={image} onLoadStart={(e)=>setPath(e.target.files[0])} alt='Edit' width={400}/>
         </label>
         <input type='file' multiple accept='image/*,video/*' id='uploadInp' onChange={(e)=>uploadFileHandeller(e)} style={{opacity:'0'}}/>
         <input value={name} type='text' onChange={(e)=> chngeHandeller(e)}/>
-        <Link className='btn btn-dark mb-5' to='/adminhomepage/adminallbrands' onClick={()=>saveHandeller()}>
+        <Link className='btn btn-dark mb-5' to='/adminhomepage/adminallcategories' onClick={()=>saveHandeller()}>
          حفظ التعديلات
         </Link>
         </Col>
@@ -90,4 +94,5 @@ const chngeHandeller =(e)=>{
   )
 }
 
-export default AdminEditBrand
+
+export default AdminEditCategory

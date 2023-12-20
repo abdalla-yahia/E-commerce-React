@@ -3,10 +3,18 @@ import * as Pic from '../../Assets'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping,faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { Outlet,Link } from 'react-router-dom';
+import { getAllProductsInSearch } from '../../Redux/Actions/ProductsActions';
+import { useDispatch } from 'react-redux';
+import ProductsSerchResult from '../Products/ProductsSerchResult';
 
 export default function NavbarMain() {
+  const dispatch = useDispatch();
+  const [prod]= ProductsSerchResult()
+
+let path = prod.length >= 1 ? '/products/searchresults' : '/'
   return (
     <>
+    
     <Navbar  className="bg-dark" style={{position: "fixed",
     top: "0",
     left: "0",
@@ -22,7 +30,11 @@ export default function NavbarMain() {
           <Link to="/login" className='text-light text-center text-decoration-none  mx-3'>دخول
           <FontAwesomeIcon  icon={faCircleUser} fontSize={22}/>
           </Link>
-          <input type='text' placeholder='بحث ....' className='text-center w-100 nav-input-serch'/>
+
+          <Link  className='w-100' to={`${path}`}>
+          <input onChange={(e)=>dispatch(getAllProductsInSearch((e.target.value).trim()))} type='text' placeholder='بحث ....' className='text-center w-100 nav-input-serch'/>
+          </Link>
+
           <Link to="/" ><img src={Pic.logo} alt='logo' className='logo mx-3'/></Link>
         </Nav>
       </Navbar.Collapse>
@@ -31,5 +43,7 @@ export default function NavbarMain() {
     <Outlet />
     </>
     
-  )
-}
+    )
+    
+  }
+  

@@ -1,7 +1,7 @@
 import { createBrowserRouter,createRoutesFromElements,Route } from "react-router-dom";
 import * as Page from "../Pages";
 import * as Comp from "../Components";
-
+// import loader from '../Components/Utility/NavbarMain'
 export const router = createBrowserRouter(
     createRoutesFromElements([
 
@@ -21,8 +21,8 @@ export const router = createBrowserRouter(
         <Route path="/adminhomepage/adminallbrands" element={<Page.AdminAllBrands/>} errorElement={<Page.ErrorPage />}/>
         <Route path="/adminhomepage/adminallcategories" element={<Page.AdminAllCategory/>} errorElement={<Page.ErrorPage />}/>
         <Route path="/adminhomepage/adminproductsedit" element={<Page.AdminProductsEdit/>} errorElement={<Page.ErrorPage />}/>
-        <Route path="/adminhomepage/adminbrandsedit" element={<Page.AdminBrandsEdit/>} errorElement={<Page.ErrorPage />}/>
-        <Route path="/adminhomepage/admineditcategory" element={<Page.AdminCategoryEdit/>} errorElement={<Page.ErrorPage />}/>
+        <Route path="/adminhomepage/adminbrandsedit" element={<Page.AdminAddanewBrand/>} errorElement={<Page.ErrorPage />}/>
+        <Route path="/adminhomepage/admineditcategory" element={<Page.AdminAddanewCategory/>} errorElement={<Page.ErrorPage />}/>
         <Route path="/adminhomepage/adminesubcategory" element={<Page.AdminSubCategory/>} errorElement={<Page.ErrorPage />}/>
         <Route path="/adminhomepage/admineaddproducts" element={<Page.AdminAddProducts/>} errorElement={<Page.ErrorPage />}/>
         <Route path="/adminhomepage/admineeditproduct/:id" element={<Page.AdminEditProductPage/>} errorElement={<Page.ErrorPage />}/>
@@ -34,6 +34,10 @@ export const router = createBrowserRouter(
         <Route path="/userhomepage/userAdresses/addnewadreess" element={<Page.UserEditeAddress/>} errorElement={<Page.ErrorPage />}/>
         <Route path="/userhomepage/profile/:id" element={<Page.UserProfile/>} errorElement={<Page.ErrorPage />}/>
         <Route path="/adminhomepage/brands/:ID" element={<Page.AdminEditBrand/>} errorElement={<Page.ErrorPage />}/>
+        <Route path="/adminhomepage/category/:ID" element={<Page.AdminEditCategory/>} errorElement={<Page.ErrorPage />}/>
+        <Route path="/products/searchresults" element={<Page.SearchProductsPage/>} errorElement={<Page.ErrorPage />} />
+        <Route path="/category/:id/products" element={<Page.ProductsCategory/>} errorElement={<Page.ErrorPage />} />
+        <Route path="/brand/:id/products" element={<Page.ProductsOfBrand/>} errorElement={<Page.ErrorPage />} />
         
         
         <Route path="*" element={<Page.Rongpath/>}/>

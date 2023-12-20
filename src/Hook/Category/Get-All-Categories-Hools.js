@@ -15,7 +15,7 @@ function GetAllCategoriesHooks() {
     let pages = 0
     
     useEffect(()=>{
-      dispatch(getAllCategories(5))
+      dispatch(getAllCategories())
     },[dispatch,pages,ID])
     
     const pg =(e)=>{

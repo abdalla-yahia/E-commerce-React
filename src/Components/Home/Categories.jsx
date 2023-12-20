@@ -32,7 +32,7 @@ if(categories.paginationResult){
         <Col  lg='12'  style={{backgroundColor:'#fff'}} className='d-flex p-3 flex-wrap justify-content-between align-items-center'>
                 {
                 categories.data && categories.data.slice(0,6).map((item,index)=>(
-                    <ElementCategory getID={getID} key={index} img={item.image}  title={item.name} color={Colors[Math.floor(Math.random() * Colors.length)]}/>
+                    <ElementCategory getID={getID} key={index} img={item.image} id={item._id} title={item.name} color={Colors[Math.floor(Math.random() * Colors.length)]}/>
                 ))
                 }
             </Col>

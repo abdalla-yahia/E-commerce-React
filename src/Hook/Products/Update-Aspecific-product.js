@@ -108,9 +108,7 @@ function UpdateAspecificProductHook() {
 //#######  Send Data Of Product to the server #############################
 //########################################################################
   const updateHandellerSubmit = async () => {
-    console.log('first')
     let ImgCover=''
-    console.log(images[0].length)
     if (
       Object.keys(images).length !== 0&&
       name !== "" &&
@@ -123,24 +121,32 @@ function UpdateAspecificProductHook() {
       brand !== 'none'
       ) {
         
-        const formdata = new FormData();
-
-
         if(images[0].length >= 1000){
-
           ImgCover = dataURLtoFile(newImages[0], Math.random() + ".png");
-          console.log('One',ImgCover)
-          newImages.map((e) =>
-          formdata.append("images", dataURLtoFile(e, Math.random() + ".png"))
-          );
-        }else{
+          }else{
           ImgCover =await getBase64Image(images[0]).then(res=>res);
-          console.log('Two',ImgCover)
-
-          for(let i in images){
-            formdata.append("images",await getBase64Image(images[i]).then(res=>res))
           }
+        console.log(images)
+
+        //Create a new FormDAta
+        const formdata = new FormData();
+        for(let i in images){ 
+        if(images[i].length >= 1000){
+          // ImgCover = dataURLtoFile(newImages[0], Math.random() + ".png");
+
+          // newImages.map((e) =>
+          formdata.append("images",await dataURLtoFile(images[i], Math.random() + ".png"))
+          // );
+        }else{
+          // ImgCover =await getBase64Image(images[0]).then(res=>res);
+          // console.log('Two',ImgCover)
+
+          // for(let i in images){
+            formdata.append("images",await getBase64Image(images[i]).then(res=>res))
+          // }
         }
+        }
+        //Set Data In Form Data
       await formdata.append("imageCover", ImgCover);
       await formdata.append("title", name);
       await formdata.append("category", ID);
