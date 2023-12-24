@@ -24,9 +24,9 @@ function ShopingProductsPage() {
         <Row >
           
         {
-            products.data && products.data.map(e=>
+            products.data && products.data.map((e,i)=>
               
-                <ProductCart img={e.imageCover} title={e.title} Description={e.description} price={e.price} rating={e.rating} fav={true} car={true} id={e._id} cat={e.category} brand={e.brand}/>
+                <ProductCart key={i} img={e.imageCover} title={e.title} Description={e.description} price={e.price} rating={e.rating} fav={true} car={true} id={e._id} cat={e.category} brand={e.brand}/>
               
             )
           }

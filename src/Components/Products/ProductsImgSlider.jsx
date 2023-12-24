@@ -13,15 +13,28 @@ function ProductsImgSlider({imgs}) {
     let width = ispress === false ?'100%':'0%'
   return (
     <>
-    <Col sm='4' lg="4" className='d-flex justify-content-center align-items-center' style={{Height:'300px',backgroundColor:bg ,marginTop:'20px',borderRadius:'10px',padding:'0px',position:'relative'}}>
+    <Col sm='4' lg="4" className='d-flex justify-content-center align-items-center' style={{Height:'300px',backgroundColor:bg ,marginTop:'20px',borderRadius:'10px',padding:'0px',position:'relative',overflow:'hidden'}}>
+    {/* This Code For Transfare between Images By Hover Event*/}
+    
+    {/* <div className="parentbox">
+      <div className="box front" style={{ borderRadius:'20px',maxWidth:'400px',minHeight:'100%',bottom:'0px',background:'#fff'}}>
+      <img src={imgs&&imgs[0]} alt='cover' width={width}  style={{cursor:'pointer',objectFit:'cover',}}/>
+      </div>
+      <div className="box back"  style={{boxShadow:'5px 3px 10px rgba(0,0,0,.5)',cursor:'pointer',bottom:'25%',width:'100%', height:'75%',zIndex:'1',borderRadius:'20px'}}>
+    <ReactImageGallery showThumbnails items={images} ResizeObserverSize={'200px'} autoPlay={true}  showIndex={false} showNav={false} showFullscreenButton={false} showPlayButton={false}/>
+      </div>
+    </div> */}
+
+    {/* This Code For Transfare between Images By Click Event*/}
     <img src={imgs&&imgs[0]} alt='cover' width={width}  style={{cursor:'pointer',objectFit:'cover',}} onClick={(e)=>setIspress(!ispress)}/>
     {ispress === true ?(
       <div   style={{ boxShadow:'5px 3px 10px rgba(0,0,0,.5)',borderRadius:'20px',position:'relative',maxWidth:'400px',minHeight:'100%',bottom:'0px',background:'#fff'}}>
     <ReactImageGallery  items={images} ResizeObserverSize={'300px'} autoPlay={true}  showIndex={false} showNav={false} showFullscreenButton={false} showPlayButton={false}/>
       <div onClick={(e)=>setIspress(!ispress)} style={{cursor:'pointer',opacity:'0',position:'absolute',bottom:'25%',background:'black',width:'100%', height:'75%',zIndex:'1',borderRadius:'20px'}}></div>
-      </div>
+      </div> 
     )
     :null}
+     
     </Col>
     </>
   )

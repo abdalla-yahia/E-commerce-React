@@ -5,9 +5,11 @@ import { useEffect, useState } from "react";
 import { createProduct } from "../../Redux/Actions/ProductsActions";
 import getAllBrandsHook from "../../Redux/Actions/BrandsActions";
 import { notify } from "../../Components";
+import { useNavigate } from "react-router-dom";
 
 
 function CreateAnewProductHook() {
+  const navigator = useNavigate()
   const dispatch = useDispatch();
 
   const [ID, setID] = useState('');
@@ -59,12 +61,12 @@ function CreateAnewProductHook() {
 
   // When Select sub category is selected
   const onSelect = (selectedList, selectedItem) => {
-    setSubCategor([...selectedList, selectedItem.id]);
+    setSubCategor([...subcategory, selectedItem.id]);
   };
 
   // When Remove sub category is selected
   const onRemove = (selectedList, removedItem) => {
-    setSubCategor([...selectedList.filter((item) => item !== removedItem.id)]);
+    setSubCategor([...subcategory.filter((item) => item !== removedItem.id)]);
   };
 
   // Send Data Of Produc to the server
@@ -97,10 +99,9 @@ function CreateAnewProductHook() {
       );
       colors.map((e) => formdata.append("availableColors", e));
       subcategory.map((e) => formdata.append("subcategory", e));
-      dispatch(createProduct(formdata));
-      
+      await dispatch(createProduct(formdata));
       notify("success",'تمت إضافة المنتج بنجاح 👍');
-
+      
       setID("");
       setSubCategor([]);
       setBrand("");
@@ -113,7 +114,8 @@ function CreateAnewProductHook() {
       setColors([]);
       setShowColors("");
       state.options = [];
-     
+      navigator(`/adminhomepage/adminproductsedit`)
+      
     } else {
       let msg = Object.keys(images).length ===0 ? 'من فضلك إختر صورة المنتج':
       name === "" ? 'من فضلك أكتب اسم المنتج' :

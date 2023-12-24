@@ -109,3 +109,31 @@ display: none !important;
     display: none;
   }
 }
+.parentbox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style:preserve-3d ;
+  transition: .5s;
+}
+.box {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100%;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+}
+.box img {
+  max-width: 80%;
+}
+.box.back {
+  transform: rotateY(-180deg);
+}
+
+.parentbox:hover {
+  transform:translateX(50%) rotateY(180deg) translateX(50%);
+}

@@ -22,9 +22,9 @@ function ElementCategory({img,color,title,control,id,getID}) {
 
   return (
     <>
-    <div  className='d-flex flex-column justify-content-center align-items-center' onClick={()=>productsClickHandeller(id)}>
+    <div  className='d-flex flex-column justify-content-center align-items-center' >
     <Card style={{cursor:'pointer',margin:'10px', width: '150px',height:'150px',borderRadius:'50%',backgroundColor:color }} className='d-flex justify-content-evenly align-items-center '>
-    <Card.Img src={img} style={{maxWidth:'100px'}} />
+    <Card.Img src={img} style={{maxWidth:'100px'}} onClick={()=>productsClickHandeller(id)}/>
     </Card>
       <Card.Footer className='w-50 '>
       {control &&<div className='d-flex justify-content-between px-2'>

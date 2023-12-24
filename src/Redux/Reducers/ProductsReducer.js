@@ -70,6 +70,7 @@ const ProductsReducer = (state=initialState, action) => {
                     return {
                     ...state,
                     productsCategory:action.payload
+                    // productsCategory:action.payload
                     }
                 case GET_PRODUCTS_OF_BRAND:
                     return {

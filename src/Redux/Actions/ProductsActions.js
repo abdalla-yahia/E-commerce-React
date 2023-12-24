@@ -4,9 +4,9 @@ import getAllHook, { CreateHook,DeleteteHook,UpdateHook } from "../../Hooks/Cust
 
 //Get All Products
 
-export const getAllProducts = (sort='',key='') => async (dispatch) => {
+export const getAllProducts = (query='') => async (dispatch) => {
     try {
-        const res = await getAllHook(`/api/v1/products?sort=${sort}&keyword=${key}`);
+        const res = await getAllHook(`/api/v1/products?${query}`);
         // console.log(res.status)
         dispatch({
             type: GET_ALL_PRODUCTS,
@@ -157,9 +157,9 @@ export const deleteProductfromCart = (id,token) => async (dispatch) => {
 export const getProductsOfCategory = (id) => async (dispatch) => {
 
     try {
-        let api = id !== '' ? `/api/v1/products/?category=${id}` :'/api/v1/products/'
-        const res = await getAllHook(`${api}`)
-        dispatch({
+        // let api = id !== '' ? `/api/v1/products/?category=${id}` :'/api/v1/products/'
+        const res = await getAllHook(`/api/v1/products?category=${id}`)
+        await dispatch({
             type:GET_PRODUCTS_OF_CATEGORY,
             payload:res.data,
         })

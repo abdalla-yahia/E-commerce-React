@@ -1,4 +1,3 @@
-import React from 'react'
 import * as Comp from '../../Components'
 import { Container, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -50,6 +49,7 @@ const {id}= useParams()
       price={products.data && products.data.price}
       colors={products.data && products.data.availableColors}
       brand={oneBrand.data && oneBrand.data.name}
+      quantity={products.data && products.data.quantity}
       />
       </Row>
       <Row>
@@ -58,7 +58,7 @@ const {id}= useParams()
       <Row>
         <Comp.Title title={'منتجات قد تعجبك'}/>
         {
-          productsOfCat.data && productsOfCat.data.map(e=>
+          productsOfCat.data && productsOfCat.data.slice(0,4).map(e=>
             <Comp.ProductCart cat={e.category} brand={e.brand} fav={true} car={true} img={e.imageCover} title={e.title} Description={e.description} price={e.price} rating={4.5} id={e._id}/>
           )
         }
