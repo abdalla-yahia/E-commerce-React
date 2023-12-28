@@ -4,9 +4,9 @@ import getAllHook, { CreateHook,DeleteteHook,UpdateHook } from "../../Hooks/Cust
 
 //Get All Products
 
-export const getAllProducts = (query='') => async (dispatch) => {
+export const getAllProducts = () => async (dispatch) => {
     try {
-        const res = await getAllHook(`/api/v1/products?${query}`);
+        const res = await getAllHook(`/api/v1/products`);
         // console.log(res.status)
         dispatch({
             type: GET_ALL_PRODUCTS,
@@ -19,11 +19,12 @@ export const getAllProducts = (query='') => async (dispatch) => {
 
 //Get All Products In Search with a spesific Word
 
-export const getAllProductsInSearch = (word) => async (dispatch) => {
+export const getAllProductsInSearch = (query) => async (dispatch) => {
     try {
-        dispatch({
+            const products = await getAllHook(`/api/v1/products?${query}`);
+       await dispatch({
             type: GET_ALL_PRODUCTS_IN_SEARCH,
-            payload: word,
+            payload: products.data,
         });
     } catch (error) {
         console.log(error);

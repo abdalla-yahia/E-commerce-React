@@ -1,14 +1,13 @@
 import { Dropdown } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faListCheck } from '@fortawesome/free-solid-svg-icons';
-import { getAllProductsInSearch } from '../../Redux/Actions/ProductsActions';
-import { useDispatch } from 'react-redux';
+import FilterProducts from '../../Hook/Products/Filter-Products-Hook';
 
-function DrobDown({Sort}) {
-  const dispatch =useDispatch()
+function DrobDown() {
+  const [,,,,onchangeFilter] = FilterProducts()
   const clickMe = (e)=>{
-    localStorage.setItem('filter',e.target.innerText)
-    dispatch(getAllProductsInSearch(e.target.innerText))
+    localStorage.setItem('sort',e.target.innerText)
+    onchangeFilter(e.target.innerText)
   }
 
   return (
@@ -18,6 +17,7 @@ function DrobDown({Sort}) {
       ترتيب حسب
     </Dropdown.Toggle>
     <Dropdown.Menu >
+      <Dropdown.Item href="#/action-3" onClick={(e)=>clickMe(e)}>الكل</Dropdown.Item>
       <Dropdown.Item href="#/action-3" onClick={(e)=>clickMe(e)} >المضاف حديثاً</Dropdown.Item>
       <Dropdown.Item href="#/action-1" onClick={(e)=>clickMe(e)}> السعر من الأقل إلى الأعلى</Dropdown.Item>
       <Dropdown.Item href="#/action-3" onClick={(e)=>clickMe(e)}>السعر من  الأعلى إلى الأقل</Dropdown.Item>

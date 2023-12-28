@@ -2,16 +2,20 @@ import {Container,Nav,Navbar} from 'react-bootstrap';
 import * as Pic from '../../Assets'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping,faCircleUser } from '@fortawesome/free-solid-svg-icons';
-import { Outlet,Link } from 'react-router-dom';
-import { getAllProductsInSearch } from '../../Redux/Actions/ProductsActions';
-import { useDispatch } from 'react-redux';
-import ProductsSerchResult from '../Products/ProductsSerchResult';
+import { Outlet,Link,useNavigate } from 'react-router-dom';
+import FilterProducts from '../../Hook/Products/Filter-Products-Hook';
 
 export default function NavbarMain() {
-  const dispatch = useDispatch();
-  const [prod]= ProductsSerchResult()
+  const [,,,,,onchangeSearch] =FilterProducts()
+const navigate = useNavigate()
 
-let path = prod.length >= 1 ? '/products/searchresults' : '/'
+const searchHandeller = (e)=>{
+  localStorage.setItem('search', e.target.value);
+  onchangeSearch(e.target.value)
+  if((e.target.value).trim().length >= 3)
+    navigate('/allproducts')
+}
+
   return (
     <>
     
@@ -31,9 +35,9 @@ let path = prod.length >= 1 ? '/products/searchresults' : '/'
           <FontAwesomeIcon  icon={faCircleUser} fontSize={22}/>
           </Link>
 
-          <Link  className='w-100' to={`${path}`}>
-          <input onChange={(e)=>dispatch(getAllProductsInSearch((e.target.value).trim()))} type='text' placeholder='بحث ....' className='text-center w-100 nav-input-serch'/>
-          </Link>
+          {/* <Link  className='w-100'> */}
+          <input onChange={(e)=>searchHandeller(e)} type='text' placeholder='بحث ....' className='text-center w-100 nav-input-serch'/>
+          {/* </Link> */}
 
           <Link to="/" ><img src={Pic.logo} alt='logo' className='logo mx-3'/></Link>
         </Nav>

@@ -1,19 +1,26 @@
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import GetAllCategoriesHooks from "../../Hook/Category/Get-All-Categories-Hools";
+import { useState } from "react";
+import FilterProducts from "../../Hook/Products/Filter-Products-Hook";
 
 export default function SubNav() {
+  const [,,,,,,categories] =GetAllCategoriesHooks()
+  const [isShecked,setIsShecked] = useState(false)
+  const [clickedHandeller,AllCheckedCategoryHandeller,cat,products,onchangeFilter,onchangeSearch,,brand,AllCheckedBrandsHandeller,isSheckedBrand,getStartPrice,getEndPrice,startPrice,endPrice,setPage,clickedHandeller2] =  FilterProducts()
+  const clickHandeller = ()=>{
+    setIsShecked(!isShecked)
+  }
   return (
     <Navbar data-bs-theme="primary" style={{backgroundColor:'#fff'}}>
         <Container>
         <Nav  className="ms-auto">
-            <Nav.Link href="#home">الكل</Nav.Link>
-            <Nav.Link href="#features">اجهزة كهربائية</Nav.Link>
-            <Nav.Link href="#pricing">ادوات منزلية</Nav.Link>
-            <Nav.Link href="#home">الكترونيات</Nav.Link>
-            <Nav.Link href="#features">لابتوبات</Nav.Link>
-            <Nav.Link href="#pricing">ملابس</Nav.Link>
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">أغذية</Nav.Link>
-            <Nav.Link href="#pricing">المزيد...</Nav.Link>
+            <Button variant="dark" onClick={(e)=>AllCheckedCategoryHandeller(e)}>الكل</Button>
+            {
+              categories.data && categories.data.slice(0,isShecked?categories.data.length:4).map(category =>
+              <Button  variant={'light'} onClick={(e)=>clickedHandeller2(e)} value={category._id}>{category.name}</Button>
+              )
+            }
+            <Button  onClick={()=>clickHandeller()}>{isShecked?'أقل':'المزيد'}...</Button>
           </Nav>
         </Container>
       </Navbar>
