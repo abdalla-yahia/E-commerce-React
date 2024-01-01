@@ -68,12 +68,12 @@ function LoginPage() {
           هل نسيت كلمة السر؟
         <Link className="text-danger text-decoration-none" to={'/login/forgetpassword'}>أضغط هنا</Link>
       </Form.Label>
-      <Form.Label className="mb-3">
+      {/* <Form.Label className="mb-3">
         <Link className="text-danger text-decoration-none" to={'/adminhomepage'}> الدخول بحساب الأدمن</Link>
       </Form.Label>
       <Form.Label className="mb-3">
         <Link className="text-danger text-decoration-none" to={'/userhomepage'}> الدخول بحساب المستخدم</Link>
-      </Form.Label>
+      </Form.Label> */}
       <TostifyLiprary />
     </Form>
   )

@@ -41,9 +41,16 @@ export const  DeleteteHook =async (url,params)  => {
 
 //Update a Content hook
 
-export const  UpdateHook =async (url,params)  => {
+export const  UpdateHookWithToken =async (url,params)  => {
 
     const res = await baseURL.put(url,params,config);
+    return res
+}
+//Update a Content hook
+
+export const  UpdateHook =async (url,params)  => {
+
+    const res = await baseURL.put(url,params);
     return res
 }
 

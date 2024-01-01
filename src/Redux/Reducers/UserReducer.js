@@ -1,4 +1,4 @@
-import { AUTH_NEW_USER, GET_ALL_USERS, LOG_USER,GET_ONE_USER,UPDATE_ONE_USER,ADD_ADDRESS,LOG_OUT_USER, FORGETPASS_USER } from "../Types/Types"
+import { AUTH_NEW_USER, GET_ALL_USERS, VIRIFY_RESET,LOG_USER,GET_ONE_USER,UPDATE_ONE_USER,ADD_ADDRESS,LOG_OUT_USER, FORGETPASS_USER, RESET_PASSWORD } from "../Types/Types"
 
 
 const initialState =
@@ -7,6 +7,9 @@ const initialState =
     LoginUser:[],
     user:[],
     Address:[],
+    forgetPass:[],
+    virifycode:[],
+    resetPassword:[],
     loading: true,
 }
 
@@ -56,6 +59,19 @@ const authReducer = (state=initialState, action)=>{
             case FORGETPASS_USER:
                 return {
                     ...state,
+                    forgetPass:action.payload,
+                    loading: false
+                }
+            case VIRIFY_RESET:
+                return {
+                    ...state,
+                    virifycode:action.payload,
+                    loading: false
+                }
+            case RESET_PASSWORD:
+                return {
+                    ...state,
+                    resetPassword:action.payload,
                     loading: false
                 }
         default:

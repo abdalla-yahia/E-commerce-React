@@ -56,7 +56,6 @@ const data = {
       run()
     }else{
       notify('warning',user)
-      console.log(user)
     }
   },[dispatch,user,done])
 

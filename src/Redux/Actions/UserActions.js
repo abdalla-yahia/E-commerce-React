@@ -1,5 +1,5 @@
-import getAllHook,{CreateHook} from "../../Hooks/Custom-Hooks";
-import { AUTH_NEW_USER, GET_ALL_USERS,LOG_USER,GET_ONE_USER,FORGETPASS_USER,UPDATE_ONE_USER,ADD_ADDRESS,LOG_OUT_USER } from "../Types/Types";
+import getAllHook,{CreateHook, UpdateHook} from "../../Hooks/Custom-Hooks";
+import { AUTH_NEW_USER, RESET_PASSWORD,GET_ALL_USERS,LOG_USER,VIRIFY_RESET,GET_ONE_USER,FORGETPASS_USER,UPDATE_ONE_USER,ADD_ADDRESS,LOG_OUT_USER } from "../Types/Types";
 
 
 const config = {
@@ -129,10 +129,48 @@ export const userForgetPassword = (email) => async (dispatch) => {
         const user = await CreateHook('/api/v1/auth/forgotPasswords',email)
         dispatch({
             type: FORGETPASS_USER,
+            payload: user.data.status,
+        })
+    } catch (e) {
+        dispatch({
+            type: FORGETPASS_USER,
+            payload: e.response.data.status,
+        })
+    }
+}
+// VirifyCode a user
+
+export const userVerifyCode = (data) => async (dispatch) => {
+
+    try {
+        const user = await CreateHook('/api/v1/auth/verifyResetCode',data)
+        dispatch({
+            type: VIRIFY_RESET,
+            payload: user.data.status,
+        })
+    } catch (e) {
+        dispatch({
+            type: VIRIFY_RESET,
+            payload: e.response.data.status,
+            // payload: e,
+        })
+    }
+}
+// Reset Password a user
+
+export const userResetPassword = (data) => async (dispatch) => {
+
+    try {
+        const user = await UpdateHook('/api/v1/auth/resetPassword',data)
+        dispatch({
+            type: RESET_PASSWORD,
             payload: user,
         })
-        console.log(user.status)
-    } catch (error) {
-        console.log(error)
+    } catch (e) {
+        dispatch({
+            type: RESET_PASSWORD,
+            payload: e.response.data.status,
+            
+        })
     }
 }
