@@ -5,22 +5,23 @@ import FilterProducts from "../../Hook/Products/Filter-Products-Hook";
 
 export default function SubNav() {
   const [,,,,,,categories] =GetAllCategoriesHooks()
-  const [isShecked,setIsShecked] = useState(false)
-  const [clickedHandeller,AllCheckedCategoryHandeller,cat,products,onchangeFilter,onchangeSearch,,brand,AllCheckedBrandsHandeller,isSheckedBrand,getStartPrice,getEndPrice,startPrice,endPrice,setPage,clickedHandeller2] =  FilterProducts()
+  const [isShecked2,setIsShecked] = useState(false)
+  const [,,,,,,isShecked,,,,,,,,,clickedHandeller2,AllCheckedCategoryHandeller2,categoryID] =  FilterProducts()
   const clickHandeller = ()=>{
-    setIsShecked(!isShecked)
+    setIsShecked(!isShecked2)
   }
+
   return (
     <Navbar data-bs-theme="primary" style={{backgroundColor:'#fff'}}>
         <Container>
         <Nav  className="ms-auto">
-            <Button variant="dark" onClick={(e)=>AllCheckedCategoryHandeller(e)}>الكل</Button>
+            <Button variant={isShecked?'dark':'light'} onClick={(e)=>AllCheckedCategoryHandeller2(e)}>الكل</Button>
             {
-              categories.data && categories.data.slice(0,isShecked?categories.data.length:4).map(category =>
-              <Button  variant={'light'} onClick={(e)=>clickedHandeller2(e)} value={category._id}>{category.name}</Button>
+              categories.data && categories.data.slice(0,isShecked2?categories.data.length:4).map(category =>
+              <Button key={category._id} variant={categoryID.includes(category._id)?'dark':'light'} onClick={(e)=>clickedHandeller2(e)} value={category._id}>{category.name}</Button>
               )
             }
-            <Button  onClick={()=>clickHandeller()}>{isShecked?'أقل':'المزيد'}...</Button>
+            <Button variant="secondary"  onClick={()=>clickHandeller()}>{isShecked2?'أقل':'المزيد'}...</Button>
           </Nav>
         </Container>
       </Navbar>

@@ -9,6 +9,7 @@ export const router = createBrowserRouter(
 
         <Route index element={<Page.HomePage />} errorElement={<Page.ErrorPage />}/>
         <Route index path="/login/" element={<Page.LoginPage/>} errorElement={<Page.ErrorPage />} />
+        <Route index path="/login/forgetpassword" element={<Page.ForgetPassword/>} errorElement={<Page.ErrorPage />} />
         <Route path="/login/regester" element={<Page.RegesterPage/>} errorElement={<Page.ErrorPage />}/>
         <Route path="/allcategory" element={<Page.AllCategory/>} errorElement={<Page.ErrorPage />}/>
         <Route path="/allbrands" element={<Page.Allbrands/>} errorElement={<Page.ErrorPage />}/>

@@ -28,13 +28,15 @@ export const GetBrandByPAge =(page,limit) => async (dispatch) =>{
     })
 }
 //Create a new instance of the current brands object
-export const CreateBrand =(formData)=>async (dispatch) => {
+export const CreateBrand =(formData,token)=>async (dispatch) => {
     
     const brand = await CreateHook('/api/v1/brands/',formData,{
         headers:{
-            'Content-Type':'multipart/form-data'
+            'Content-Type':'multipart/form-data',
+            'Authorization':`Bearer ${token}`
         }
-    })
+    }
+    )
     dispatch({
         type: CREATE_BRAND,
         payload: brand.data,
@@ -43,8 +45,14 @@ export const CreateBrand =(formData)=>async (dispatch) => {
 
 //Delete a brand
 
-export const DeleteBrand = (id) => async (dispatch) => {
-    const brand = await DeleteteHook(`/api/v1/brands/${id}/`)
+export const DeleteBrand = (id,token) => async (dispatch) => {
+    const brand = await DeleteteHook(`/api/v1/brands/${id}`,{
+        headers:{
+            'Content-Type':'multipart/form-data',
+            'Authorization':`Bearer ${token}`
+        }
+    }
+    )
     dispatch({
         type: DELETE_BRAND,
         payload: brand.data
@@ -53,10 +61,16 @@ export const DeleteBrand = (id) => async (dispatch) => {
 
 //Update a brand
 
-export const UpdateBrand = (id,formData) => async (dispatch) => {
+export const UpdateBrand = (id,formData,token) => async (dispatch) => {
+   
     try {
         
-        const brand = await UpdateHook(`/api/v1/brands/${id}`,formData)
+        const brand = await UpdateHook(`/api/v1/brands/${id}`,formData,{
+            headers:{
+                'Content-Type':'multipart/form-data',
+                'Authorization':`Bearer ${token}`
+            }
+        })
         dispatch({
             type: UPDATE_BRAND,
             payload: brand.data

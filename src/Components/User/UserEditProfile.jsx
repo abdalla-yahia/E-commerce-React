@@ -1,8 +1,18 @@
 import { faEdit } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 
 
 function UserEditProfile() {
+    const [adress,setAdress]=useState('')
+    const [phone,setPhone]=useState('')
+    const [name,setName]=useState('')
+    const data = JSON.parse(localStorage.getItem('user'))
+    useEffect(()=>{
+    setName(data.name)
+    setPhone(data.phone)
+    },[])
   return (
     <>
     <div>
@@ -15,7 +25,7 @@ function UserEditProfile() {
         <div className='d-flex  flex-column justify-content-between gap-3 '>
 
         <h5>الاسم : 
-            <span>على محمد على</span>
+            <span>{name}</span>
         </h5>
         <h5>
         العنوان :
@@ -23,7 +33,7 @@ function UserEditProfile() {
         </h5>
         <h5>
             رقم الهاتف : 
-        <span> 012546556851</span>
+        <span>{phone} </span>
         </h5>
         </div>
     </div>

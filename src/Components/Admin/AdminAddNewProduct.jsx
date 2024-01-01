@@ -8,13 +8,16 @@ import CreateAnewProductHook from '../../Hook/Products/Create-Anew-Product-Hook'
 import { useState } from 'react';
 
 function AdminAddNewProduct() {
+
 const  [setID,setBrand,images, setImages,name,setName,
     description,setDesc,totalPrice,setTotalPrice,netPrice,setNetPrice,quantity,setQuantaty,colors,setColors
     ,showColors,setShowColors,
     categories,brands,state,onSelect,onRemove,sendDataHNDELLER,ID,brand,
 ] = CreateAnewProductHook()
+
   const [count,setCount] =useState(0)
-const PriceHandeller =(e)=>{
+  
+  const PriceHandeller =(e)=>{
     if(+netPrice > +totalPrice && +totalPrice > 0){
         notify('error','لايمكن أن يكون السعر بعد الخصم أكبر من قبل الخصم')
         setNetPrice('')

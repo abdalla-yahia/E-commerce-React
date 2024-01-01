@@ -1,6 +1,7 @@
 export {default as HomePage} from './Home/HomePage';
 export {default as LoginPage} from './Auth/LoginPage';
 export {default as RegesterPage} from './Auth/RegesterPage';
+export {default as ForgetPassword} from './Auth/ForgetPassword';
 export {default as ProductPageDetails} from './Products/ProductPageDetails'
 export {default as SearchProductsPage} from './Products/SearchProductsPage'
 export {default as ShopingProductsPage} from './Products/ShopingProductsPage'

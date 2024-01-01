@@ -7,12 +7,14 @@ function ShopingProductsPage() {
 
 let pg=(e)=>{
 setPage(e)
+
 }
   let count = products.data&&products.data.length
   let title = count <=0 ?'لا يوجد منتجات متاحة' :count === 1 || count >=11?'منتج متاح' :'منتجات متاحة'
   let pages=0;
   if(products.paginationResult){
-    pages=products.paginationResult.numberOfPages
+      pages=products.paginationResult.numberOfPages
+    
   }
   return (
     <div style={{minHeight:'776px'}}>

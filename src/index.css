@@ -137,3 +137,19 @@ display: none !important;
 .parentbox:hover {
   transform:translateX(50%) rotateY(180deg) translateX(50%);
 }
+
+.nav-item.dropdown > a {
+  color: white !important;;
+}
+.dropdown-menu,
+.dropdown-menu  a{
+  color: white !important;
+  text-decoration: none !important;
+}
+.dropdown-menu a:hover {
+  background-color: white !important;
+  color: black !important;
+}
+.dropdown-menu{
+  background-color: rgba(42, 41, 41, 0.956) !important;
+}

@@ -8,6 +8,7 @@ export {default as SubTitleProducts} from './Utility/SubTitleProducts'
 export {default as AsideFilter} from './Utility/AsideFilter'
 export {default as RateProducts} from './Utility/RateProducts'
 export {default as Loading} from './Utility/Loading'
+export {default as NavLoginProfile} from './Utility/NavLoginProfile'
 export {default as MainCategory} from './Category/MainCategory';
 export {default as ElementCategory} from './Category/ElementCategory';
 export {default as Slider} from './Home/Slider';

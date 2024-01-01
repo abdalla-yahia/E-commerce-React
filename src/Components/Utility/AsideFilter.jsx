@@ -13,15 +13,15 @@ function AsideFilter() {
         <h4>الفئة</h4>
         <span>
          {categories.data&& 
-            <input className='ms-2' type='checkbox' checked={isShecked} value='الكل' id='total' onClick={(e)=>AllCheckedCategoryHandeller(e)}/>
+            <input className='ms-2' type='checkbox' checked={isShecked} value='الكل' id='total-Categories' onChange={(e)=>AllCheckedCategoryHandeller(e)}/>
           }
-        <label htmlFor="total">الكل</label>
+        <label htmlFor="total-Categories">الكل</label>
         </span>
         {cat}
         <h4>الماركة</h4>
         <span>
-        <input className='ms-2' type='checkbox' checked={isSheckedBrand} value='الكل' id='total' onClick={(e)=>AllCheckedBrandsHandeller(e)}/>
-        <label htmlFor="total">الكل</label>
+        <input className='ms-2' type='checkbox' checked={isSheckedBrand} value='الكل' id='total-brands' onChange={(e)=>AllCheckedBrandsHandeller(e)}/>
+        <label htmlFor="total-brands">الكل</label>
         </span>
         {brand}
        
@@ -31,12 +31,12 @@ function AsideFilter() {
         <h4>السعر</h4>
         <span>
         <label htmlFor="totalStart">من</label>
-        <input className='me-2 mb-2' value={startPrice} onChange={(e)=>getStartPrice(e)} type='number' min={0} max={10000}/>
+        <input id='totalStart' className='me-2 mb-2' value={startPrice} onChange={(e)=>getStartPrice(e)} type='number' min={0} max={10000}/>
         </span>
 
         <span>
         <label htmlFor="totalEnd"> إلى</label>
-        <input className='me-2 mb-2' value={endPrice} onChange={(e)=>getEndPrice(e)} type='number' min={0} max={10000}/>
+        <input id='totalEnd' className='me-2 mb-2' value={endPrice} onChange={(e)=>getEndPrice(e)} type='number' min={0} max={10000}/>
         </span>
         </div>
     </div>

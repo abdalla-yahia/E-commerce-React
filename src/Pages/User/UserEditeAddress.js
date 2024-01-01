@@ -21,7 +21,7 @@ function UserEditeAddress() {
     <Comp.UserAddNewAddress />
     <div className='w-100 d-flex justify-content-center align-items-center mb-5'>
     <Link to={'/userhomepage/userAdresses'}>
-    <button className='btn btn-dark'>حفظ التعديلات  </button>
+    {/* <button className='btn btn-dark'>حفظ التعديلات  </button> */}
     </Link>
     </div>
   </Col>

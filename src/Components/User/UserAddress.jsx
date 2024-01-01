@@ -3,11 +3,11 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 
-function UserAddress({edit}) {
+function UserAddress({edit,adressName,description,phone}) {
   return (
     <div className='d-flex p-3 flex-column rounded-2 p-3 gap-3 mb-3' style={{backgroundColor:'#fff'}}>
         <div className='d-flex justify-content-between'>
-        <h3>المنزل</h3>
+        <h3>{adressName}</h3>
         {edit&&<div className='d-flex gap-3'>
             <span>حذف
 
@@ -19,8 +19,8 @@ function UserAddress({edit}) {
             </span>
         </div>}
         </div>
-        <h5>القاهرة شارع النصر التسعين عمارة 14</h5>
-        <h5>رقم الهاتف : 012546556851</h5>
+        <h5>{description}</h5>
+        <h5>رقم الهاتف : {phone}</h5>
     </div>
   )
 }

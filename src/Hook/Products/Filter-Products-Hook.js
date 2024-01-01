@@ -12,7 +12,7 @@ function FilterProducts() {
     const [,,,,,,categories] =GetAllCategoriesHooks()
     const [brands,,,] = GetAllBrandsHooks()
 
-    const [page,setPage] = useState('')
+    const [page,setPage] = useState(1)
     const [sort,setSort] = useState('')
     const [sortKind,setSortKind] = useState('')
     const [search,setSearch] = useState('')
@@ -26,13 +26,16 @@ function FilterProducts() {
     const [isSheckedBrand,setIsSheckedBrand] = useState(false)
 
     // Function to filter on Dropdown Component
-    const onchangeFilter =()=>{
-      setSort(localStorage.getItem('sort'))
+    const onchangeFilter =(e)=>{
+      // setSort(localStorage.getItem('sort'))
+      setSort(e)
     }
     // Function to Get Word Search in Navbar Component
     const onchangeSearch = (e)=>{
-      setSearch(localStorage.getItem('search'))
+      // setSearch(localStorage.getItem('search'))
+      setSearch(e)
     }
+    
     //Function to Get Category Id To Filter Search Of Category
     const  clickedHandeller =(e)=>{
       if(e.target.checked){
@@ -41,21 +44,19 @@ function FilterProducts() {
         }else{
         setCategoryID(categoryID.filter(ele=>ele !== e.target.value))
         categories.data.length !== categoryID.length && setIsShecked(false)
+        
         }
       }
     const  clickedHandeller2 =(e)=>{
       if(e.target.className.includes('btn-light')){
         e.target.classList.remove('btn-light') 
          e.target.classList.add('btn-dark')
-      }else{
-        e.target.classList.remove('btn-dark')
-         e.target.classList.add('btn-light')
-      }
-
-      if(e.target.className.includes('btn-light')){
         setCategoryID(res=>{return [...res,(e.target.value)]})
       }else{
         setCategoryID(categoryID.filter(ele=>ele !== e.target.value))
+        e.target.classList.remove('btn-dark')
+        e.target.classList.add('btn-light')
+        
       }
       
       }
@@ -79,49 +80,57 @@ function FilterProducts() {
         (e.target.value == 0 || e.target.value === '') ? setEndPrice(1000000):
         setEndPrice(e.target.value)
       }
+// useEffect(()=>{
+//   const run =  async ()=>{
+//     if(localStorage.getItem('category')){
+//       console.log('Done')
+//      await setCategoryID(JSON.parse(localStorage.getItem('category')))
+//     }
+//     if(localStorage.getItem('brands')){
+//       console.log('Done')
+//      await setBrandID(JSON.parse(localStorage.getItem('brands')))
+//     }
+//   }
+//   run()
+// },[])
+
+
+
 useEffect(()=>{
-  //Set the category 
   categories.data &&
     setCat(categories.data.map((e,i)=>
 <span key={i}>
-  <input className='ms-2' type='checkbox' checked={categoryID.includes(e._id)}  value={e._id} id={e._id} onClick={(e)=>{clickedHandeller(e)}}/>
-  <label htmlFor={e._id}>{e.name}</label>
+  <input className='ms-2' type='checkbox' checked={categoryID.includes(e._id)}  value={e._id} id={`input${e._id}`} onChange={(e)=>{clickedHandeller(e)}}/>
+  <label htmlFor={`input${e._id}`}>{e.name}</label>
   </span> 
   ))
   categories.data&& categories.data.length === categoryID.length ? setIsShecked(true):setIsShecked(false)
+  
   //Set the Brands
   brands.data &&
     setBrand(brands.data.map((e,i)=>
 <span key={i}>
-  <input className='ms-2' type='checkbox' checked={brandID.includes(e._id)}  value={e._id} id={e._id} onClick={(e)=>{clickedHandellerBrands(e)}}/>
-  <label htmlFor={e._id}>{e.name}</label>
+  <input className='ms-2' type='checkbox' checked={brandID.includes(e._id)}  value={e._id} id={`input${e._id}`} onChange={(e)=>{clickedHandellerBrands(e)}}/>
+  <label htmlFor={`input${e._id}`}>{e.name}</label>
   </span> 
   ))
   brands.data&& brands.data.length === brandID.length ? setIsSheckedBrand(true):setIsSheckedBrand(false)
-
+  // brands.data&& localStorage.setItem('brands',JSON.stringify(brandID))
 },[categories,brands,brandID,categoryID,dispatch])
 
-useEffect(()=>{
-        setTimeout(()=>{
-          localStorage.setItem('category',JSON.stringify(categoryID))
-          localStorage.setItem('brands',JSON.stringify(brandID))
-          localStorage.setItem('startPrice',startPrice)
-          localStorage.setItem('endPrice',endPrice)
-        },100)
-},[categoryID,brandID,startPrice,endPrice])
 
-let cats = JSON.parse(localStorage.getItem('category'));
-let Brans = JSON.parse(localStorage.getItem('brands'));
+
+
+// let cats =localStorage.getItem('category');
+// let Brans =localStorage.getItem('brands');
 
 useEffect(()=>{
       setStartPrice(localStorage.getItem('startPrice'))
       setEndPrice(localStorage.getItem('endPrice'))
       setSort(localStorage.getItem('sort'))
       setSearch(localStorage.getItem('search'))
-      setTimeout(()=>{
-        setCategoryID(cats)
-        setBrandID(Brans)
-      },100)
+      localStorage.getItem('category')? setCategoryID(JSON.parse(localStorage.getItem('category'))):setCategoryID([])
+      localStorage.getItem('brands')? setBrandID(JSON.parse(localStorage.getItem('brands'))):setBrandID([])
 
           if(sort !== ''){
             if(sort==='الكل'){
@@ -136,25 +145,39 @@ useEffect(()=>{
             }
              else if(sort==='الأكثر مبيعاً'){
               setSortKind('-quantity')
+            }else{
+              localStorage.setItem('search','')
+              localStorage.setItem('sort','')
+              setSortKind('')
+              setSearch('')
             }
           }
 },[sort,search])
 
-let Brands =brandID.length >=1 ? brandID.map(e=>`brand=${e}`):[]
-let Categories =categoryID.length >=1 ? categoryID.map(e=>`category=${e}`):[]
-let query = `sort=${sortKind}&limit=5&page=${page}&keyword=${search}&${Categories.join('&')}&${Brands.join('&')}&price[gte]=${startPrice}&price[lte]=${endPrice}`
 useEffect(()=>{
   setTimeout(()=>{
-    if(categoryID.length){
-      dispatch(getAllProductsInSearch(query))
-    }
+    categoryID.length >=1 && localStorage.setItem('category',JSON.stringify(categoryID))
+    brandID.length >=1 && localStorage.setItem('brands',JSON.stringify(brandID))
   },100)
-},[sortKind,search,categoryID,brandID,startPrice,endPrice,page])
-//  [sortKind,search,categoryID,brandID,startPrice,endPrice,page]
+      localStorage.setItem('startPrice',startPrice)
+      localStorage.setItem('endPrice',endPrice)
+},[categoryID,brandID,startPrice,endPrice])
+
+useEffect(()=>{
+  let Brands =brandID.length >=1 ? brandID.map(e=>`brand=${e}`):[]
+  let Categories =categoryID.length >=1 ? categoryID.map(e=>`category=${e}`):[]
+
+   let query = `sort=${sortKind}&limit=8&page=${page}&keyword=${search}&${Categories.join('&')}&${Brands.join('&')}&price[gte]=${startPrice}&price[lte]=${endPrice}`
+   if(categoryID.length || search !== '') {
+     dispatch(getAllProductsInSearch(query))
+    }
+
+},[sortKind,search,categoryID,brandID,startPrice,endPrice,page,dispatch])
+
     
     //Function To get All Categories in the AsideFilter Component
     const AllCheckedCategoryHandeller =(el) => {
-     setIsShecked( !isShecked)
+    setIsShecked( !isShecked)
       if(el.target.checked ){
         setCategoryID([])
         categories.data && setCategoryID(categories.data.map((e)=>e._id))
@@ -162,7 +185,18 @@ useEffect(()=>{
         categories.data && setCategoryID([])
       }
     }
-    
+    //Function To get All categories in the SubNav Component
+      const AllCheckedCategoryHandeller2 =(e) => {
+        if(e.target.className.includes('btn-light')){
+          e.target.classList.remove('btn-light') 
+          e.target.classList.add('btn-dark')
+          categories.data && setCategoryID(categories.data.map((e)=>e._id))
+        }else{
+          e.target.classList.remove('btn-dark')
+          e.target.classList.add('btn-light') 
+          categories.data && setCategoryID([])
+      }
+      }
     //Function To get All Brands in the AsideFilter Component
     const AllCheckedBrandsHandeller =(el) => {
      setIsSheckedBrand( !isSheckedBrand)
@@ -173,9 +207,13 @@ useEffect(()=>{
         brands.data && setBrandID([])
       }
     }
+  
 
   return (
-    [clickedHandeller,AllCheckedCategoryHandeller,cat,products,onchangeFilter,onchangeSearch,isShecked,brand,AllCheckedBrandsHandeller,isSheckedBrand,getStartPrice,getEndPrice,startPrice,endPrice,setPage,clickedHandeller2]
+    [clickedHandeller,AllCheckedCategoryHandeller,
+      cat,products,onchangeFilter,onchangeSearch,isShecked,brand,
+      AllCheckedBrandsHandeller,isSheckedBrand,getStartPrice,getEndPrice,
+      startPrice,endPrice,setPage,clickedHandeller2,AllCheckedCategoryHandeller2,categoryID]
   )
 }
 

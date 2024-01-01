@@ -2,7 +2,7 @@
 import ReactPaginate from 'react-paginate'
 
 function Paginations({pg,pages}) {
-  const handlePageClick =(e)=>{
+  let handlePageClick =(e)=>{
     pg(e.selected +1 )
     
   }

@@ -13,14 +13,15 @@ const navigate = useNavigate()
   useEffect(()=>{
     getId(ID)
   },[ID])
-const ProductsHandeller =()=>{
-  navigate(`/brand/${id}/products`)
-}
+
   return (
     <>
-    <Col style={{cursor:'pointer'}} xm='12' sm='6' md='4' lg='2' className='mb-3 d-flex justify-content-center' onClick={()=>ProductsHandeller()} >
+    <Col style={{cursor:'pointer'}} xm='12' sm='6' md='4' lg='2' className='mb-3 d-flex justify-content-center'  >
             <Card  style={{ width: '8rem',height:'180px' }}>
+              <Link to={`/brand/${id}/products`}>
+
                 <Card.Img src={img} style={{minHeight:'125px'}}/>
+              </Link>
                 <Card.Footer className='text-center'>
             {control ?<div className='d-flex justify-content-between px-2'>
               <span onClick={()=>{DeleteHandeller(id);setID(id)}}>

@@ -4,38 +4,49 @@ import { useDispatch,useSelector } from "react-redux"
 import {LogUser} from '../../Redux/Actions/UserActions'
 import { useState,useEffect } from "react"
 import { TostifyLiprary, notify } from "../../Components"
-import { useNavigate } from "react-router-dom"
 
 function LoginPage() {
   const res = useSelector(state=>state.authusers.LoginUser)
-  const loading = useSelector(state=>state.authusers.loading)
-
+  // const loading = useSelector(state=>state.authusers.loading)
   const dispatch = useDispatch()
   const [email, setEmail]=useState('')
   const [password, setPassword]=useState('')
-  const [random, setRandom]=useState('')
-  const [login, setLogin]=useState(null)
+  const [login, setLogin]=useState(false)
   
-  const navigate= useNavigate()
-
   const LoginHandeller = async()=>{
     if(email !== '' && password !== ''){
-      setRandom(Math.floor(Math.random()* 100))
-     dispatch(LogUser({
-        email,
-        password
-      }))
-      localStorage.removeItem('token')
-      localStorage.setItem('token', res.token)
-      console.log(res.token)
-      notify('success','تم تسجيل الدخول بنجاح')
-     } else {
-        notify('warning')
-        localStorage.removeItem('token')
-      }
-    }
 
- 
+      setLogin(true)
+      dispatch(LogUser({
+        email,
+        password,
+      }))
+      setLogin(false)
+      localStorage.removeItem('token')
+    } else {
+      notify('warning','حدثت مشكلة فى الدخول')
+      localStorage.removeItem('token')
+    }
+  }
+  
+  
+  useEffect(()=>{
+    let logFunction = async()=>{
+     await notify('success','تم تسجيل الدخول بنجاح')
+      res.data&& localStorage.setItem('token', JSON.stringify(res.token))
+      res.data&& localStorage.setItem('user', JSON.stringify(res.data))
+      setTimeout(()=>{
+        
+       window.location.pathname = '/'
+      },100) 
+    }
+    if(res.token){
+      logFunction()
+  }else{
+    notify('warning',res)
+    localStorage.removeItem('token')
+  }
+ },[login,res])
   
   return (
     
@@ -52,6 +63,10 @@ function LoginPage() {
       <Form.Label className="mb-3">
         ليس لديك حساب؟
         <Link className="text-danger text-decoration-none" to={'/login/regester'}>أضغط هنا</Link>
+      </Form.Label>
+      <Form.Label className="mb-3">
+          هل نسيت كلمة السر؟
+        <Link className="text-danger text-decoration-none" to={'/login/forgetpassword'}>أضغط هنا</Link>
       </Form.Label>
       <Form.Label className="mb-3">
         <Link className="text-danger text-decoration-none" to={'/adminhomepage'}> الدخول بحساب الأدمن</Link>

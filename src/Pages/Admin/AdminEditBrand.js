@@ -17,6 +17,8 @@ function AdminEditBrand() {
     const [loading,setLoading] = useState(true)
     const dispatch = useDispatch();
     
+    let token = JSON.parse(localStorage.getItem('token'));
+    // console.log(JSON.parse(localStorage.getItem('token')))
     useEffect(()=>{
       dispatch(getOneBrand(ID))
     },[ID])
@@ -57,7 +59,7 @@ function AdminEditBrand() {
   
   notify('success')
       setLoading(false)
-        dispatch(UpdateBrand(id,data))
+       await dispatch(UpdateBrand(id,data,token))
         setLoading(true)
         setName('')
         setPath('')
